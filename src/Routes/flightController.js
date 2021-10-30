@@ -1,4 +1,4 @@
-const User = require('../models/Users');
+const User = require('../models/Flights');
 exports.addUser = (req, res) => {
     
     const user = new User(req.body)
@@ -46,7 +46,7 @@ exports.viewUsers = (req, res) => {                                             
     };
   
     //Deleting an existing user
-    exports.deleteUser = (req,res)=>{
+    exports.deleteFlight = (req,res)=>{
       User.findByIdAndRemove(req.params.id).then(result =>{
   
           res.status(200).send("User Deleted ");
