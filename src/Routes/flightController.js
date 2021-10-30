@@ -1,9 +1,9 @@
-const User = require('../models/Flights');
-exports.addUser = (req, res) => {
+const Flight = require('../models/Flights');
+exports.addFlight = (req, res) => {
     
-    const user = new User(req.body)
+    const flight = new Flight(req.body)
   
-    user.save()
+    flight.save()
       .then(result => {
         res.send(result);
         console.log("added");
@@ -12,10 +12,10 @@ exports.addUser = (req, res) => {
         console.log(err);
       });
   };
-// getting all the users
+// getting all the flights
 
-exports.viewUsers = (req, res) => {                                               ``
-    User.find({})
+exports.viewFlights = (req, res) => {                                               ``
+    Flight.find({})
       .then(result => {
         res.send(result);
       })
@@ -24,8 +24,8 @@ exports.viewUsers = (req, res) => {                                             
       });
     };
 
-    exports.getUser = (req, res) => {
-      User.find({Name:req.params.name})
+    exports.getFlight = (req, res) => {
+      Flight.find({Name:req.params.name})
         .then(result => {
           res.send(result);
         })
@@ -34,23 +34,23 @@ exports.viewUsers = (req, res) => {                                             
         });
     };
 
-    exports.updateUser = (req,res)=>{
-      User.findByIdAndUpdate(req.params.id,req.body).then(result =>{
+    exports.updateFlight = (req,res)=>{
+      Flight.findByIdAndUpdate(req.params.id,req.body).then(result =>{
   
-          res.status(200).send("User updated ");
-          console.log('The User is Updated successfully !');
+          res.status(200).send("Flight updated ");
+          console.log('The Flight is Updated successfully !');
       }).catch(err => {
           console.log(err);
         });
   
     };
   
-    //Deleting an existing user
+    //Deleting an existing Flight
     exports.deleteFlight = (req,res)=>{
-      User.findByIdAndRemove(req.params.id).then(result =>{
+      Flight.findByIdAndRemove(req.params.id).then(result =>{
   
-          res.status(200).send("User Deleted ");
-          console.log("The User is deleted successfully !");
+          res.status(200).send("Flight Deleted ");
+          console.log("The Flight is deleted successfully !");
       }).catch(err => {
           console.log(err);
         });
