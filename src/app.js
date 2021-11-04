@@ -37,9 +37,7 @@ app.get("/createstudent",(req , res)  =>{
     res.send(admin)
   });
 
-  app.get("/Trial",(req , res)  =>{
-    res.render('Trial')
-  });
+
 
   
   app.post('/CreateFlight', flightController.addFlight)

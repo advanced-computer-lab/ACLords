@@ -75,7 +75,7 @@ export default function CreateFlight() {
 
         
 
-        <button onClick={Submitclick}>Submit</button>
+        <button onClick={Submitclick}>Create</button>
 
 
           </div>
