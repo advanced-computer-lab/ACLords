@@ -4,7 +4,7 @@ import ViewFlights from './Component/ViewFlights'
 
 export default function App() {
   return (
-    //<CreateFlight/>
-     <ViewFlights/>
+    <CreateFlight/>
+    //<ViewFlights/>
   )
 }

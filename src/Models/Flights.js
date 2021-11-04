@@ -10,6 +10,20 @@ const flightSchema = new Schema({
     type: String,
     required: true,
   },
+  FlightDate: {
+    type:String,
+    required: true,
+  },
+  Cabin: {
+    type: String,
+    required: true,
+  },
+  SeatsAvilableOnFlight: {
+    type: String,
+    required: true,
+  },
+
+  /*
   FlightNumber: {
     type: String,
     required: true,
@@ -34,6 +48,7 @@ const flightSchema = new Schema({
     type: String,
     required: true
   },
+  */
 
 }, { timestamps: true });
 
