@@ -1,12 +1,16 @@
 
 const express = require("express");
 const mongoose = require('mongoose');
+const flightController = require('./Routes/flightController');
+const userController = require('./Routes/userController');
+// App variables
 var cors = require('cors');
 const app = express();
 const port = process.env.PORT || "8000";
-const User = require('./Models/Users');
-const flightController = require('./Routes/flightController');
+//const flightController = require('./Routes/flightController');
 
+app.use(express.urlencoded({extended: true}));
+app.use(express.json())
 app.use(cors({ origin: true, credentials: true }));
 
 mongoose.connect("mongodb+srv://ACLords:1234qwer@airlinedb.e4p3f.mongodb.net/AirLineDB?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
@@ -39,6 +43,12 @@ app.get("/createstudent",(req , res)  =>{
 
   
   app.post('/CreateFlight', flightController.addFlight)
+
+  // app.get("/CreateFlight",(req , res)  =>{
+  //   res.send('flightController.addFlight')
+  // });
+
+  app.get("/ViewFlights",flightController.viewFlights);
   
   app.get("/Trial2",(req , res)  =>{
     res.render('Trial2')

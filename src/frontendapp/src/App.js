@@ -1,21 +1,10 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React from 'react'
+import CreateFlight from './Component/CreateFlight'
+import ViewFlights from './Component/ViewFlights'
 
-import CreateFilght from './Component/CreateFlight';
-// import viewFlights from './Component/viewFlights';
-
-class App extends Component {
-  render() {
-    return (
-      <Router>
-        <div>
-        <Route exact path='/' Component={CreateFilght} />
-          <Route path='/CreateFlight' Component={CreateFilght} />
-    
-        </div>
-      </Router>
-    );
-  }
+export default function App() {
+  return (
+    <CreateFlight/>
+    // <ViewFlights/>
+  )
 }
-
-export default App;
