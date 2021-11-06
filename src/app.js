@@ -11,12 +11,14 @@ const port = process.env.PORT || "8000";
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json())
-app.use(cors({ origin: true, credentials: true }));
+
 
 mongoose.connect("mongodb+srv://ACLords:1234qwer@airlinedb.e4p3f.mongodb.net/AirLineDB?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
 .then(result =>console.log("MongoDB is now connected") )
 .catch(err => console.log(err));
 
+
+app.use(cors());
 // app.set('view engine', 'ejs');
 
 // const admin = new User({Name: 'Adminstrator',  
@@ -41,7 +43,7 @@ app.get("/createstudent",(req , res)  =>{
 
   
   app.post('/CreateFlight', flightController.addFlight)
-
+  app.get("/Search",flightController.searchFlights);
   // app.get("/CreateFlight",(req , res)  =>{
   //   res.send('flightController.addFlight')
   // });
@@ -53,7 +55,7 @@ app.get("/createstudent",(req , res)  =>{
   });
 
   app.get("/",(req , res)  =>{
-    res.send("hello")
+    res.send("This is the empty page pliz re-direct to something")
   });
 
 app.listen(port, () => {

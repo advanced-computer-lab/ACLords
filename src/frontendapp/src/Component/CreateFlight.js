@@ -3,19 +3,24 @@ import axios from 'axios';
 import {useRef} from 'react'
 export default function CreateFlight() {
 
-
+    const from = useRef("");
+    const to = useRef("");
     const flightnumber = useRef("");
-    const departuretime = useRef("");
-    const arrivaltime = useRef("");
+    const departuredate = useRef("");
+    const arrivaldate = useRef("");
     const date = useRef("");
     const numberofeconomyseats = useRef("");
     const numberofbusinessseats = useRef("");
     const airport = useRef("");
+
+    
     function Submitclick(){
         var body = {
+            From:from.current.value,
+            To:to.current.value,
             FlightNumber:flightnumber.current.value,
-            DepartureDate:departuretime.current.value,
-            ArrivalDate:arrivaltime.current.value,
+            DepartureDate:departuredate.current.value,
+            ArrivalDate:arrivaldate.current.value,
             EconomySeats:numberofeconomyseats.current.value,
             BusinessClassSeats:numberofbusinessseats.current.value,
             Airport:airport.current.value
@@ -50,15 +55,23 @@ export default function CreateFlight() {
         
         <div className='form-group'>
 
-       
+        <input type='text' 
+        placeholder='From' ref={from} /> <br></br>
+
+        <input type='text' 
+        placeholder='To' ref={to} /> <br></br>
+
         <input type='text' 
         placeholder='Flight Number' ref={flightnumber} /> <br></br>
 
-        <input type='text' 
-        placeholder='Departure Time' ref={departuretime} /> <br></br>
+     <input type='text' 
+        placeholder='Flight Date' ref={flightnumber} /> <br></br> 
 
         <input type='text' 
-        placeholder='Arrival Time' ref={arrivaltime}/> <br></br>
+        placeholder='Departure Time' ref={departuredate} /> <br></br>
+
+        <input type='text' 
+        placeholder='Arrival Time' ref={arrivaldate}/> <br></br>
 
         <input type='text' 
         placeholder='Date' ref={date}/> <br></br>

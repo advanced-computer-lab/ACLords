@@ -7,7 +7,7 @@ export default function ViewFlights() {
     
     const [flights,setFlights] = useState([]);    
     
-    useEffect(()=>{
+    useEffect(()=>{                     
 
         axios.get(`http://localhost:8000/ViewFlights`).then(res=>{
         setFlights(res.data);

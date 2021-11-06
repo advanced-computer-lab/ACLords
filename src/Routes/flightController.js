@@ -1,4 +1,5 @@
 const Flight = require('../models/Flights');
+// const search = require('../Component/Search');
 exports.addFlight = (req, res) => {
     
     const flight = new Flight(req.body)
@@ -15,7 +16,8 @@ exports.addFlight = (req, res) => {
 // getting all the flights
 
 exports.viewFlights = (req, res) => {                                               ``
-    Flight.find({})
+    Flight.find({
+    })
       .then(result => {
         res.send(result);
       })
@@ -23,6 +25,26 @@ exports.viewFlights = (req, res) => {                                           
         console.log(err);
       });
     };
+
+    exports.searchFlights = (req, res) => {                                               ``
+    Flight.find({FlightNumber:req.body.flightNumber, 
+                DepartureDate:req.body.departureDate,
+                ArrivalDate:req.body.arrivalDate,
+                 Date:req.body.date,
+                Airport:req.body.airport
+    })
+      .then(result => {
+        res.send(result);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    };
+
+
+    
+
+
 
     exports.getFlight = (req, res) => {
       Flight.find({Name:req.params.name})
