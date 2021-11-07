@@ -4,11 +4,14 @@ const mongoose = require('mongoose');
 const flightController = require('./Routes/flightController');
 const userController = require('./Routes/userController');
 const bodyparser = require("body-parser");
-
+const app = express();
 // App variables
 var cors = require('cors');
+app.use(cors());
+app.use(express.urlencoded({extended: true}));
+app.use(express.json())
 const bodyParser = require("body-parser");
-const app = express();
+
 const port = process.env.PORT || "8000";
 //const flightController = require('./Routes/flightController');
 
@@ -62,6 +65,11 @@ app.get("/edit", (req,res)=>{
   // });
 
   app.get("/ViewFlights",flightController.viewFlights);
+  app.put("/UpdateFlights/:id",flightController.UpdateFlights);
+
+  
+  
+  
   
   app.get("/",(req , res)  =>{
     res.send("This is the empty page pliz re-direct to something")

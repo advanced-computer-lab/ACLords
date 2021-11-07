@@ -1,6 +1,25 @@
 import React from 'react'
+import UpdateFlights from './UpdateFlights'
+import {useRef} from 'react'
 
 export default function Flight({data}) {
+
+//     function UpdateFlights(){
+//     //const [from,setFrom] = UseState([]);
+
+//     const from = useRef("");
+//      const to = useRef("");
+//     const flightNumber = useRef("");
+//     const departureDate = useRef("");
+//     const arrivalDate = useRef("");
+//     const numberOfEconomySeats = useRef("");
+//     const numberOfBusinessSeats = useRef("");
+//     const airport = useRef("");
+
+   
+
+//  }
+console.log(data);
 
     return (
         <div>
@@ -14,13 +33,18 @@ export default function Flight({data}) {
             <label>{"Arrival Date :  " + data.ArrivalDate +", "}  </label>
             <label>{"Economy Seats :  " + data.EconomySeats +", "}  </label>
             <label>{"Business Class Seats :  " + data.BusinessClassSeats +", "}  </label>
-            <label>{"Airport :  " + data.Airport}  </label>
+            <label>{"Airport :  " + data.airport}  </label>
 
 
-            {/* <button onClick={() => {flightController(data._id)}}> Edit </button>
-            <button onClick={() => deleteMethod(data._id)}> Delete </button> */}
+            {/*} <button onClick={() => {UpdateFlights(data._id)}}> Edit </button> */}
+            {/* <button onClick={() => deleteMethod(data._id)}> Delete </button>  */}
 
+            
 
+        
+            {/* <a href = "http://localhost:3000/UpdateFlights"  > Edit </a> */}
+
+            <UpdateFlights row={data}> Edit  </UpdateFlights>      
             
             {/* From:from.current.value,
             To:to.current.value,
@@ -36,11 +60,11 @@ export default function Flight({data}) {
     )
 }
 
-/*
- <label>{"Flight number :  " + data.FlightNumber}  </label>
-            <label>{"Departure date :  " + data.DepartureDate}  </label>
-            <label>{"Arrival date :  " + data.ArrivalDate}  </label>
-            <label>{"Economy seats :  " + data.EconomySeats}  </label>
-            <label>{"Business seats :  " + data.BusinessClassSeats}  </label>
-            <label>{"Airport :  " + data.Airport}  </label>
-*/
+
+//  <label>{"Flight number :  " + data.FlightNumber}  </label>
+//             <label>{"Departure date :  " + data.DepartureDate}  </label>
+//             <label>{"Arrival date :  " + data.ArrivalDate}  </label>
+//             <label>{"Economy seats :  " + data.EconomySeats}  </label>
+//             <label>{"Business seats :  " + data.BusinessClassSeats}  </label>
+//             <label>{"Airport :  " + data.Airport}  </label>
+

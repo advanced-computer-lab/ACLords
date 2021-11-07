@@ -55,16 +55,30 @@ exports.viewFlights = (req, res) => {                                           
         });
     };
 
-    exports.updateFlight = (req,res)=>{
-      Flight.findByIdAndUpdate(req.params.id,req.body).then(result =>{
+    // exports.updateFlight = (req,res)=>{
+    //   Flight.findByIdAndUpdate(req.params.id,req.body).then(result =>{
   
-          res.status(200).send("Flight updated ");
-          console.log('The Flight is Updated successfully !');
-      }).catch(err => {
-          console.log(err);
-        });
+    //       res.status(200).send("Flight updated ");
+    //       console.log('The Flight is Updated successfully !');
+    //   }).catch(err => {
+    //       console.log(err);
+    //     });
   
-    };
+    // };
+
+    exports.UpdateFlights = (req,res) => {
+      console.log("kkkk" + req.params.id);
+      console.log("RRRR" + req.body);
+      Flight.findByIdAndUpdate(req.params.id , req.body)
+      .then(result =>{
+        res.status(200).send("Flight Updated ")
+      })
+      .catch(err =>{
+        console.log(err);
+      })
+    }
+
+
   
     //Deleting an existing Flight
     exports.deleteFlight = (req,res)=>{
