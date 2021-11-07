@@ -3,14 +3,25 @@ const express = require("express");
 const mongoose = require('mongoose');
 const flightController = require('./Routes/flightController');
 const userController = require('./Routes/userController');
+const bodyparser = require("body-parser");
+
 // App variables
 var cors = require('cors');
+const bodyParser = require("body-parser");
 const app = express();
 const port = process.env.PORT || "8000";
 //const flightController = require('./Routes/flightController');
 
-app.use(express.urlencoded({extended: true}));
-app.use(express.json())
+// app.use(express.urlencoded({extended: true}));
+// app.use(express.json())
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
+
+app.use(bodyParser.urlencoded({
+  type: 'application/*+json'
+}))
+app.use(bodyParser.json());
 
 
 mongoose.connect("mongodb+srv://ACLords:1234qwer@airlinedb.e4p3f.mongodb.net/AirLineDB?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
@@ -40,20 +51,18 @@ app.get("/createstudent",(req , res)  =>{
   });
 
 
-
+app.get("/edit", (req,res)=>{
+  res.render('EditFlight')
+})
   
   app.post('/CreateFlight', flightController.addFlight)
-  app.get("/Search",flightController.searchFlights);
+  app.post("/Search",flightController.searchFlights);
   // app.get("/CreateFlight",(req , res)  =>{
   //   res.send('flightController.addFlight')
   // });
 
   app.get("/ViewFlights",flightController.viewFlights);
   
-  app.get("/Trial2",(req , res)  =>{
-    res.render('Trial2')
-  });
-
   app.get("/",(req , res)  =>{
     res.send("This is the empty page pliz re-direct to something")
   });

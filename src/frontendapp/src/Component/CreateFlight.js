@@ -5,12 +5,13 @@ export default function CreateFlight() {
 
     const from = useRef("");
     const to = useRef("");
-    const flightnumber = useRef("");
-    const departuredate = useRef("");
-    const arrivaldate = useRef("");
+    const flightNumber = useRef("");
+    // const flightDate = useRef("");
+    const departureDate = useRef("");
+    const arrivalDate = useRef("");
     const date = useRef("");
-    const numberofeconomyseats = useRef("");
-    const numberofbusinessseats = useRef("");
+    const numberOfEconomySeats = useRef("");
+    const numberOfBusinessSeats = useRef("");
     const airport = useRef("");
 
     
@@ -18,11 +19,11 @@ export default function CreateFlight() {
         var body = {
             From:from.current.value,
             To:to.current.value,
-            FlightNumber:flightnumber.current.value,
-            DepartureDate:departuredate.current.value,
-            ArrivalDate:arrivaldate.current.value,
-            EconomySeats:numberofeconomyseats.current.value,
-            BusinessClassSeats:numberofbusinessseats.current.value,
+            FlightNumber:flightNumber.current.value,
+            DepartureDate:departureDate.current.value,
+            ArrivalDate:arrivalDate.current.value,
+            EconomySeats:numberOfEconomySeats.current.value,
+            BusinessClassSeats:numberOfBusinessSeats.current.value,
             Airport:airport.current.value
         };
         axios.post("http://localhost:8000/CreateFlight",body).then(res=>{
@@ -62,26 +63,26 @@ export default function CreateFlight() {
         placeholder='To' ref={to} /> <br></br>
 
         <input type='text' 
-        placeholder='Flight Number' ref={flightnumber} /> <br></br>
+        placeholder='Flight Number' ref={flightNumber} /> <br></br>
 
-     <input type='text' 
-        placeholder='Flight Date' ref={flightnumber} /> <br></br> 
-
-        <input type='text' 
-        placeholder='Departure Time' ref={departuredate} /> <br></br>
+     {/* <input type='text' 
+        placeholder='Flight Date' ref={flightDate} /> <br></br>  */}
 
         <input type='text' 
-        placeholder='Arrival Time' ref={arrivaldate}/> <br></br>
+        placeholder='Departure Date' ref={departureDate} /> <br></br>
+
+        <input type='text' 
+        placeholder='Arrival Date' ref={arrivalDate}/> <br></br>
 
         <input type='text' 
         placeholder='Date' ref={date}/> <br></br>
 
         <input type='text' 
-        placeholder='Number Of Economy Seats' ref={numberofeconomyseats} /> <br></br>
+        placeholder='Number Of Economy Seats' ref={numberOfEconomySeats} /> <br></br>
 
 
         <input type='text' 
-        placeholder='Business Seats' ref={numberofbusinessseats}/> <br></br>
+        placeholder='Business Seats' ref={numberOfBusinessSeats}/> <br></br>
 
         <input type='text' 
         placeholder='Airport' ref={airport}/> <br></br>
