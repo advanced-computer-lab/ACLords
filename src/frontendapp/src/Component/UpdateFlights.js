@@ -64,6 +64,40 @@ export default function UpdateFlights({row}){
 
     }
 
+    function deleteClick(){
+        var newFlight = {
+            From:from.current.value,
+            To:to.current.value,
+            FlightNumber:flightNumber.current.value,
+            DepartureDate:departureDate.current.value,
+            ArrivalDate:arrivalDate.current.value,
+            EconomySeats:numberOfEconomySeats.current.value,
+            BusinessClassSeats:numberOfBusinessSeats.current.value,
+            Airport:airport.current.value
+        };  
+        const strFlight = JSON.stringify(newFlight);
+
+        if(window.confirm("Are you sure you want to delete this flight?"+ strFlight)){
+          axios
+          .put("http://localhost:8000/DeleteFlight/" + row._id, newFlight)
+             .then((res) => {
+               //console.log(newFlight);
+               console.log("success");
+               window.location.reload(false);
+           
+             })
+             .catch((err) => {
+               console.log("Error!");
+             });
+        }
+        else{
+          window.location.reload(false);
+
+        }
+    
+
+    }
+
     return(
         <div className='form-group'>
 
@@ -85,6 +119,8 @@ export default function UpdateFlights({row}){
 
 
             <button onClick={updateClick}>Update Flight</button>
+
+            <button onClick={deleteClick}>Delete Flight</button>
         </div>
 
 
