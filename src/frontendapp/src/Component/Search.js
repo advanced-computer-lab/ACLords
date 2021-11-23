@@ -22,6 +22,9 @@ export default function Search() {
     const numberOfEconomySeats = useRef("");
     const numberOfBusinessSeats = useRef("");
     const airport = useRef("");
+    const cabin = useRef("");
+    const noOfAvailableSeats = useRef("");
+    const passengers = useRef("");
 
 
     function SearchMethod(){
@@ -44,6 +47,8 @@ export default function Search() {
             if(from.current.value !== ''){
                 body['From'] = from.current.value;
             }
+           
+
             if(to.current.value !== ''){
                 body['To'] = to.current.value;
             } 
@@ -56,14 +61,23 @@ export default function Search() {
             if(arrivalDate.current.value !== ''){
                 body['ArrivalDate'] = arrivalDate.current.value;
             } 
-            if(numberOfEconomySeats.current.value !== ''){
-                body['Economy Seats'] = numberOfEconomySeats.current.value;
-            } 
-            if(numberOfBusinessSeats.current.value !== ''){
-                body['Business Class Seats'] = numberOfBusinessSeats.current.value;
-            }
+            // if(numberOfEconomySeats.current.value !== ''){
+            //     body['Economy Seats'] = numberOfEconomySeats.current.value;
+            // } 
+            // if(numberOfBusinessSeats.current.value !== ''){
+            //     body['Business Class Seats'] = numberOfBusinessSeats.current.value;
+            // }
             if(airport.current.value !== ''){
-                body['ArrivalDate'] = airport.current.value;
+                body['Airport'] = airport.current.value;
+            } 
+            if(cabin.current.value !== ''){                                             
+                body['Cabin'] = cabin.current.value;
+            } 
+            if(passengers.current.value !== ''){
+                body['Passengers'] = passengers.current.value;
+            }
+            if(noOfAvailableSeats.current.value !== ''){
+                body['SeatsAvailableOnFlight'] = noOfAvailableSeats.current.value;
             } 
 
 
@@ -87,10 +101,12 @@ export default function Search() {
         <div className='form-group'>
 
         <input type='text' 
-        placeholder='From' ref={from} /> <br></br>
+        placeholder='Departure Terminal' ref={from} /> <br></br>
 
         <input type='text' 
-        placeholder='To' ref={to} /> <br></br>
+        placeholder='Arrival Terminal' ref={to} /> <br></br>
+        <input type='text' 
+        placeholder='Passengers' ref={passengers} /> <br></br>
 
         <input type='text' 
         placeholder='Flight Number' ref={flightNumber}/> <br></br>
@@ -100,13 +116,20 @@ export default function Search() {
 
         <input type='text' 
         placeholder='Arrival Date' ref={arrivalDate} /> <br></br>
-
+ 
         <input type='text' 
+        placeholder='Cabin' ref={cabin} /> <br></br>
+
+         <input type='text' 
+        placeholder='Seats Available on Flight' ref={noOfAvailableSeats} /> <br></br>
+
+        {/* <input type='text' 
         placeholder='Economy Class Seats' ref={numberOfEconomySeats}/> <br></br>
 
 
         <input type='text' 
-        placeholder='Business Class Seats ' ref={numberOfBusinessSeats} /> <br></br>
+        placeholder='Business Class Seats ' ref={numberOfBusinessSeats} /> <br></br> */}
+
 
         <input type='text' 
         placeholder='Airport' ref={airport}/> <br></br>

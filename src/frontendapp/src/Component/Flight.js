@@ -19,8 +19,8 @@ export default function Flight({data}) {
    
 
 //  }
-console.log(data);
-
+console.log(data.passengers)
+console.log(data.To)
     return (
         <div>
             <label>{"From :  " + data.From +", "}  </label> 
@@ -31,9 +31,11 @@ console.log(data);
             <label>{"Flight Number :  " + data.FlightNumber +", "}  </label>
             <label>{"Departure Date :  " + data.DepartureDate +", "}  </label>
             <label>{"Arrival Date :  " + data.ArrivalDate +", "}  </label>
-            <label>{"Economy Seats :  " + data.EconomySeats +", "}  </label>
-            <label>{"Business Class Seats :  " + data.BusinessClassSeats +", "}  </label>
+            {/* <label>{"Economy Seats :  " + data.EconomySeats +", "}  </label>
+            <label>{"Business Class Seats :  " + data.BusinessClassSeats +", "}  </label> */}
             <label>{"Airport :  " + data.airport}  </label>
+            <label>{"Passengers :  " + data.passengers}  </label>
+
 
 
             {/*} <button onClick={() => {UpdateFlights(data._id)}}> Edit </button> */}

@@ -29,8 +29,6 @@ exports.viewFlights = (req, res) => {                                           
     };
 
     exports.searchFlights = (req, res) => { 
-            console.log(req.body);
-            console.log("222222222222222");
     Flight.find(req.body)
       .then(result => {        
         res.send(result);
@@ -82,8 +80,6 @@ exports.viewFlights = (req, res) => {                                           
   
     //Deleting an existing Flight
     exports.deleteFlight = (req,res)=>{
-      console.log("ddd" + req.params.id);
-      console.log("ttt" + req.body);
       Flight.findByIdAndDelete(req.params.id)
       .then(result =>{
           res.status(200).send("Flight Deleted ");
