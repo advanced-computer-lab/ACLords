@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 function Nav(){
     const navStyle ={
        
-        color:'white'
+        color:'Black'
     };
 
 
@@ -23,6 +23,9 @@ function Nav(){
               </Link>
               <Link style={navStyle} to='/Search'>
               <li>Search Flights</li>
+              </Link>
+              <Link style={navStyle} to='/MyFlights'>
+              <li>My Flights</li>
               </Link>
 
           </ul>

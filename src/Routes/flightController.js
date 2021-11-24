@@ -65,8 +65,6 @@ exports.viewFlights = (req, res) => {                                           
     // };
 
     exports.UpdateFlights = (req,res) => {
-      console.log("kkkk" + req.params.id);
-      console.log("RRRR" + req.body);
       Flight.findByIdAndUpdate(req.params.id , req.body)
       .then(result =>{
         res.status(200).send("Flight Updated ")
@@ -82,8 +80,7 @@ exports.viewFlights = (req, res) => {                                           
     exports.deleteFlight = (req,res)=>{
       Flight.findByIdAndDelete(req.params.id)
       .then(result =>{
-          res.status(200).send("Flight Deleted ");
-      //    console.log("The Flight is deleted successfully !");
+          res.status(200).send("Flight Deleted!");
       }).catch(err => {
           console.log(err);
         })

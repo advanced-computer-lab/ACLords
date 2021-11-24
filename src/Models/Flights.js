@@ -52,6 +52,20 @@ const flightSchema = new Schema({
     required:false
   },
 
+  Duration:{
+    type: String,
+    required:false
+  },
+  
+  BaggageAllowance:{
+    type: String,
+    required:false
+  },
+  
+  Price:{
+    type: String,
+    required:false
+  },
   /*
   FlightNumber: {
     type: String,

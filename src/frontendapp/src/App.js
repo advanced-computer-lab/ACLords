@@ -1,7 +1,7 @@
 import React from 'react'
 import CreateFlight from './Component/CreateFlight'
 import Search from './Component/Search'
-import UpdateFlights from './Component/UpdateFlights'
+//import UpdateFlights from './Component/UpdateFlights'
 import ViewFlights from './Component/ViewFlights'
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom"
 import Nav from './Component/Nav';

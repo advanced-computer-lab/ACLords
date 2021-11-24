@@ -13,6 +13,8 @@ export default function ViewFlights() {
     },[]);
     
     return (
-        flights.map(f=>{return <Flight data={f}/>})
+        <div className="flights-list">
+        {flights.map(f=>{return <Flight data={f}/>})}
+        </div>
     )
 }
