@@ -1,7 +1,5 @@
 const Flight = require('../models/Flights');
 // const search = require('../Component/Search');
-
-
 exports.addFlight = (req, res) => {
     
     const flight = new Flight(req.body)
@@ -28,11 +26,16 @@ exports.viewFlights = (req, res) => {                                           
       });
     };
 
-    exports.searchFlights = (req, res) => { 
-            console.log(req.body);
-            console.log("222222222222222");
-    Flight.find(req.body)
-      .then(result => {        
+    exports.searchFlights = (req, res) => {                                               ``
+    Flight.find({From:req.body.from,
+      From:req.body.from,
+                DepartureDate:req.body.departureDate,
+                ArrivalDate:req.body.arrivalDate,
+                 Date:req.body.date,
+                Airport:req.body.airport,
+
+    })
+      .then(result => {
         res.send(result);
       })
       .catch(err => {
@@ -55,41 +58,25 @@ exports.viewFlights = (req, res) => {                                           
         });
     };
 
-    // exports.updateFlight = (req,res)=>{
-    //   Flight.findByIdAndUpdate(req.params.id,req.body).then(result =>{
+    exports.updateFlight = (req,res)=>{
+      Flight.findByIdAndUpdate(req.params.id,req.body).then(result =>{
   
-    //       res.status(200).send("Flight updated ");
-    //       console.log('The Flight is Updated successfully !');
-    //   }).catch(err => {
-    //       console.log(err);
-    //     });
+          res.status(200).send("Flight updated ");
+          console.log('The Flight is Updated successfully !');
+      }).catch(err => {
+          console.log(err);
+        });
   
-    // };
-
-    exports.UpdateFlights = (req,res) => {
-      console.log("kkkk" + req.params.id);
-      console.log("RRRR" + req.body);
-      Flight.findByIdAndUpdate(req.params.id , req.body)
-      .then(result =>{
-        res.status(200).send("Flight Updated ")
-      })
-      .catch(err =>{
-        console.log(err);
-      })
-    }
-
-
+    };
   
     //Deleting an existing Flight
     exports.deleteFlight = (req,res)=>{
-      console.log("ddd" + req.params.id);
-      console.log("ttt" + req.body);
-      Flight.findByIdAndDelete(req.params.id)
-      .then(result =>{
+      Flight.findByIdAndRemove(req.params.id).then(result =>{
+  
           res.status(200).send("Flight Deleted ");
-      //    console.log("The Flight is deleted successfully !");
+          console.log("The Flight is deleted successfully !");
       }).catch(err => {
           console.log(err);
-        })
+        });
   
-    }
+    };

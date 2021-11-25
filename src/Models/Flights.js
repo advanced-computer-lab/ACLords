@@ -28,15 +28,15 @@ const flightSchema = new Schema({
   // },
   Cabin: {
     type: String,
-    required: false,
+    required: true,
   },
   EconomySeats: {
     type: String,
-    required: true,
+    required: false,
   },
   BusinessClassSeats: {
     type: String,
-    required: true
+    required: false
   },
   Airport: {
     type: String,
@@ -45,7 +45,7 @@ const flightSchema = new Schema({
   
   SeatsAvailableOnFlight:{
     type: String,
-    required:false
+    required:true
   }
 
   /*

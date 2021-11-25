@@ -38,7 +38,7 @@ app.get("/edit", (req,res)=>{
   app.post('/CreateFlight', flightController.addFlight)
   app.post("/Search",flightController.searchFlights);
   app.get("/ViewFlights",flightController.viewFlights);
-  app.put("/UpdateFlights/:id",flightController.UpdateFlights);
+  app.put("/UpdateFlights/:id",flightController.updateFlight);
   app.put("/DeleteFlight/:id",flightController.deleteFlight);
 
 

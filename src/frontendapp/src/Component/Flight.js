@@ -31,9 +31,11 @@ console.log(data);
             <label>{"Flight Number :  " + data.FlightNumber +", "}  </label>
             <label>{"Departure Date :  " + data.DepartureDate +", "}  </label>
             <label>{"Arrival Date :  " + data.ArrivalDate +", "}  </label>
-            <label>{"Economy Seats :  " + data.EconomySeats +", "}  </label>
-            <label>{"Business Class Seats :  " + data.BusinessClassSeats +", "}  </label>
+            {/* <label>{"Economy Seats :  " + data.EconomySeats +", "}  </label>
+            <label>{"Business Class Seats :  " + data.BusinessClassSeats +", "}  </label> */}
             <label>{"Airport :  " + data.airport}  </label>
+            <label>{"Cabin :  " + data.cabin}  </label>
+            <label>{"Seats Avaialable on Flight :  " + data.seatsAvailableOnFlight}  </label>
 
 
             {/*} <button onClick={() => {UpdateFlights(data._id)}}> Edit </button> */}

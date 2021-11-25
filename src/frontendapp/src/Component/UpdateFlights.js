@@ -17,17 +17,21 @@ export default function UpdateFlights({row}){
     const flightNumber = useRef(row.FlightNumber);
     const departureDate = useRef(row.DepartureDate);
     const arrivalDate = useRef(row.ArrivalDate);
-    const numberOfEconomySeats = useRef(row.EconomySeats);
-    const numberOfBusinessSeats = useRef(row.BusinessClassSeats);
+    // const numberOfEconomySeats = useRef(row.EconomySeats);
+    // const numberOfBusinessSeats = useRef(row.BusinessClassSeats);
     const airport = useRef(row.Airport);
+    const cabin = useRef(row.Cabin);
+    const seatsAvailableOnFlight = useRef(row.SeatsAvailableOnFlight);
     const [fromState, setfromState] = useState(row.From);
     const [toState, settoState] = useState(row.To);
     const [flightNumberState, setflightNumberState] = useState(row.FlightNumber);
     const [departureDateState, setdepartureDateState] = useState(row.DepartureDate);
     const [arrivalDateState, setarrivalDateState] = useState(row.ArrivalDate);
-    const [numberOfEconomySeatsState, setnumberOfEconomySeatsState] = useState(row.EconomySeats);
-    const [numberOfBusinessSeatsState, setnumberOfBusinessSeatsState] = useState(row.BusinessClassSeats);
+    // const [numberOfEconomySeatsState, setnumberOfEconomySeatsState] = useState(row.EconomySeats);
+    // const [numberOfBusinessSeatsState, setnumberOfBusinessSeatsState] = useState(row.BusinessClassSeats);
     const [airportState, setairportState] = useState(row.Airport);
+    const [cabinState, setcabinState] = useState(row.Cabin);
+    const [seatsAvailableOnFlightState, setseatsAvailableOnFlightState] = useState(row.SeatsAvailableOnFlight);
     
 
     function updateClick(){
@@ -37,9 +41,11 @@ export default function UpdateFlights({row}){
             FlightNumber:flightNumber.current.value,
             DepartureDate:departureDate.current.value,
             ArrivalDate:arrivalDate.current.value,
-            EconomySeats:numberOfEconomySeats.current.value,
-            BusinessClassSeats:numberOfBusinessSeats.current.value,
-            Airport:airport.current.value
+            //EconomySeats:numberOfEconomySeats.current.value,
+            //BusinessClassSeats:numberOfBusinessSeats.current.value,
+            Airport:airport.current.value,
+            Cabin:cabin.current.value,
+            SeatsAvailableOnFlight:seatsAvailableOnFlight.current.value
         };
         // var body = {
         //     newFlight : newFlight,
@@ -71,9 +77,11 @@ export default function UpdateFlights({row}){
             FlightNumber:flightNumber.current.value,
             DepartureDate:departureDate.current.value,
             ArrivalDate:arrivalDate.current.value,
-            EconomySeats:numberOfEconomySeats.current.value,
-            BusinessClassSeats:numberOfBusinessSeats.current.value,
-            Airport:airport.current.value
+            //EconomySeats:numberOfEconomySeats.current.value,
+            //BusinessClassSeats:numberOfBusinessSeats.current.value,
+            Airport:airport.current.value,
+            Cabin:cabin.current.value,
+            SeatsAvailableOnFlight:seatsAvailableOnFlight.current.value
         };  
         const strFlight = JSON.stringify(newFlight);
 
@@ -111,12 +119,16 @@ export default function UpdateFlights({row}){
 
             <input type = 'text' placeholder="Arrival Date" ref = {arrivalDate} value={arrivalDateState} onChange={e => setarrivalDateState(e.target.value)}/> <br></br>
 
-            <input type = 'text' placeholder="Economy Seats Class" ref = {numberOfEconomySeats} value={numberOfEconomySeatsState} onChange={e => setnumberOfEconomySeatsState(e.target.value)}/> <br></br>
+            {/* <input type = 'text' placeholder="Economy Seats Class" ref = {numberOfEconomySeats} value={numberOfEconomySeatsState} onChange={e => setnumberOfEconomySeatsState(e.target.value)}/> <br></br>
 
             <input type = 'text' placeholder="Business Seats Class" ref = {numberOfBusinessSeats} value={numberOfBusinessSeatsState} onChange={e => setnumberOfBusinessSeatsState(e.target.value)}/> <br></br>
-
+            */}
+            
             <input type = 'text' placeholder="Airport" ref = {airport} value={airportState} onChange={e => setairportState(e.target.value)}/> <br></br>
 
+            <input type = 'text' placeholder="Cabin" ref = {cabin} value={cabinState} onChange={e => setcabinState(e.target.value)}/> <br></br>
+
+            <input type = 'text' placeholder="Seats Avialable On Flight" ref = {seatsAvailableOnFlight} value={seatsAvailableOnFlightState} onChange={e => setseatsAvailableOnFlightState(e.target.value)}/> <br></br>
 
             <button onClick={updateClick}>Update Flight</button>
 

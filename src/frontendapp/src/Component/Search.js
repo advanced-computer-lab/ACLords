@@ -22,6 +22,9 @@ export default function Search() {
     const numberOfEconomySeats = useRef("");
     const numberOfBusinessSeats = useRef("");
     const airport = useRef("");
+    const cabin = useRef("");
+    const seatsAvailableOnFlight = useRef("");
+
 
 
     function SearchMethod(){
@@ -65,6 +68,12 @@ export default function Search() {
             if(airport.current.value !== ''){
                 body['ArrivalDate'] = airport.current.value;
             } 
+            if(cabin.current.value !== ''){
+                body['Cabin'] = cabin.current.value;
+            } 
+            if(seatsAvailableOnFlight.current.value !== ''){
+                body['SeatsAvailableOnFlight'] = seatsAvailableOnFlight.current.value;
+            } 
 
 
             if(clicked){
@@ -87,10 +96,10 @@ export default function Search() {
         <div className='form-group'>
 
         <input type='text' 
-        placeholder='From' ref={from} /> <br></br>
+        placeholder='Departure Terminal' ref={from} /> <br></br>
 
         <input type='text' 
-        placeholder='To' ref={to} /> <br></br>
+        placeholder='Arrival Terminal' ref={to} /> <br></br>
 
         <input type='text' 
         placeholder='Flight Number' ref={flightNumber}/> <br></br>
@@ -101,15 +110,22 @@ export default function Search() {
         <input type='text' 
         placeholder='Arrival Date' ref={arrivalDate} /> <br></br>
 
-        <input type='text' 
+        {/* <input type='text' 
         placeholder='Economy Class Seats' ref={numberOfEconomySeats}/> <br></br>
 
 
         <input type='text' 
-        placeholder='Business Class Seats ' ref={numberOfBusinessSeats} /> <br></br>
+        placeholder='Business Class Seats ' ref={numberOfBusinessSeats} /> <br></br> */}
 
         <input type='text' 
         placeholder='Airport' ref={airport}/> <br></br>
+
+        <input type='text' 
+        placeholder='Cabin' ref={cabin}/> <br></br>
+
+
+        <input type='text' 
+        placeholder='Seats Available on flight' ref={seatsAvailableOnFlight}/> <br></br>
 
 
          

@@ -13,6 +13,8 @@ export default function CreateFlight() {
     const numberOfEconomySeats = useRef("");
     const numberOfBusinessSeats = useRef("");
     const airport = useRef("");
+    const cabin = useRef("");
+    const seatsAvailableOnFlight = useRef("");
 
     
     function Submitclick(){
@@ -22,9 +24,11 @@ export default function CreateFlight() {
             FlightNumber:flightNumber.current.value,
             DepartureDate:departureDate.current.value,
             ArrivalDate:arrivalDate.current.value,
-            EconomySeats:numberOfEconomySeats.current.value,
-            BusinessClassSeats:numberOfBusinessSeats.current.value,
-            Airport:airport.current.value
+            // EconomySeats:numberOfEconomySeats.current.value,
+            // BusinessClassSeats:numberOfBusinessSeats.current.value,
+            Airport:airport.current.value,
+            Cabin:cabin.current.value,
+            SeatsAvailableOnFlight:seatsAvailableOnFlight.current.value
         };
         axios.post("http://localhost:8000/CreateFlight",body).then(res=>{
             console.log(res);
@@ -57,10 +61,10 @@ export default function CreateFlight() {
         <div className='form-group'>
 
         <input type='text' 
-        placeholder='From' ref={from} /> <br></br>
+        placeholder='Departure Terminal' ref={from} /> <br></br>
 
         <input type='text' 
-        placeholder='To' ref={to} /> <br></br>
+        placeholder='Arrival Terminal' ref={to} /> <br></br>
 
         <input type='text' 
         placeholder='Flight Number' ref={flightNumber} /> <br></br>
@@ -74,18 +78,25 @@ export default function CreateFlight() {
         <input type='text' 
         placeholder='Arrival Date' ref={arrivalDate}/> <br></br>
 
-        <input type='text' 
-        placeholder='Date' ref={date}/> <br></br>
+        {/* <input type='text' 
+        placeholder='Date' ref={date}/> <br></br> */}
 
-        <input type='text' 
+        {/* <input type='text' 
         placeholder='Number Of Economy Seats' ref={numberOfEconomySeats} /> <br></br>
 
 
         <input type='text' 
-        placeholder='Business Seats' ref={numberOfBusinessSeats}/> <br></br>
+        placeholder='Business Seats' ref={numberOfBusinessSeats}/> <br></br> */}
 
         <input type='text' 
         placeholder='Airport' ref={airport}/> <br></br>
+
+        <input type='text' 
+        placeholder='Cabin' ref={cabin}/> <br></br>
+
+
+        <input type='text' 
+        placeholder='Seats Available on Flight' ref={seatsAvailableOnFlight}/> <br></br>
 
         
 
