@@ -35,7 +35,10 @@ app.get("/edit", (req,res)=>{
   res.render('EditFlight')
 })
   
-  app.post('/CreateFlight', flightController.addFlight)
+  app.get("/", (req,res) => {
+    res.render('Home')
+  })
+  app.post("/CreateFlight", flightController.addFlight)
   app.post("/Search",flightController.searchFlights);
   app.get("/ViewFlights",flightController.viewFlights);
   app.put("/UpdateFlights/:id",flightController.updateFlight);

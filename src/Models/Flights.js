@@ -42,12 +42,30 @@ const flightSchema = new Schema({
     type: String,
     required: true
   },
+  Passengers:{
+    type: String,
+    required: true
+  },
   
   SeatsAvailableOnFlight:{
     type: String,
-    required:true
-  }
+    required:false
+  },
 
+  Duration:{
+    type: String,
+    required:false
+  },
+  
+  BaggageAllowance:{
+    type: String,
+    required:false
+  },
+  
+  Price:{
+    type: String,
+    required:false
+  },
   /*
   FlightNumber: {
     type: String,

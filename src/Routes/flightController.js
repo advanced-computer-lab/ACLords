@@ -26,16 +26,9 @@ exports.viewFlights = (req, res) => {                                           
       });
     };
 
-    exports.searchFlights = (req, res) => {                                               ``
-    Flight.find({From:req.body.from,
-      From:req.body.from,
-                DepartureDate:req.body.departureDate,
-                ArrivalDate:req.body.arrivalDate,
-                 Date:req.body.date,
-                Airport:req.body.airport,
-
-    })
-      .then(result => {
+    exports.searchFlights = (req, res) => { 
+    Flight.find(req.body)
+      .then(result => {        
         res.send(result);
       })
       .catch(err => {
@@ -67,14 +60,25 @@ exports.viewFlights = (req, res) => {                                           
           console.log(err);
         });
   
-    };
+     };
+
+    exports.UpdateFlights = (req,res) => {
+      Flight.findByIdAndUpdate(req.params.id , req.body)
+      .then(result =>{
+        res.status(200).send("Flight Updated ")
+      })
+      .catch(err =>{
+        console.log(err);
+      })
+    }
+
+
   
     //Deleting an existing Flight
     exports.deleteFlight = (req,res)=>{
-      Flight.findByIdAndRemove(req.params.id).then(result =>{
-  
-          res.status(200).send("Flight Deleted ");
-          console.log("The Flight is deleted successfully !");
+      Flight.findByIdAndDelete(req.params.id)
+      .then(result =>{
+          res.status(200).send("Flight Deleted!");
       }).catch(err => {
           console.log(err);
         });
