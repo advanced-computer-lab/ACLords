@@ -5,6 +5,7 @@ import Search from './Component/Search'
 import ViewFlights from './Component/ViewFlights'
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom"
 import Nav from './Component/Nav';
+import ViewDetails from './Component/ViewDetails'
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
      <Route path="/CreateFlight" component={CreateFlight} exact/>
      <Route path="/ViewFlights" component={ViewFlights} exact/>
      <Route path="/Search" component={Search} exact/>
+     <Route path="/ViewDetails" component={ViewDetails} exact/>
      </Switch>
 
      </div>
@@ -36,7 +38,7 @@ export default function App() {
 
 const Home= () =>(
   <div>
-    <h1>Home Page</h1>
+    <h1>Welcome To ACLords Official Website</h1>
   </div>
 )
 

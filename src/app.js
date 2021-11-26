@@ -43,6 +43,7 @@ app.get("/edit", (req,res)=>{
   app.get("/ViewFlights",flightController.viewFlights);
   app.put("/UpdateFlights/:id",flightController.updateFlight);
   app.put("/DeleteFlight/:id",flightController.deleteFlight);
+  app.get("/ViewDetails/:id",flightController.viewdetails);
 
 
 app.listen(port, () => {

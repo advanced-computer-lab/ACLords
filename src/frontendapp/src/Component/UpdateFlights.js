@@ -135,11 +135,17 @@ export default function UpdateFlights({ row }) {
             <input type = 'text' placeholder="Business Seats Class" ref = {numberOfBusinessSeats} value={numberOfBusinessSeatsState} onChange={e => setnumberOfBusinessSeatsState(e.target.value)}/> <br></br> */}
 
       <input type='text' placeholder="Airport" ref={airport} value={airportState} onChange={e => setairportState(e.target.value)} /> <br></br>
+
       <input type='text' placeholder="Cabin" ref={cabin} value={cabinState} onChange={e => setcabinState(e.target.value)} /> <br></br>
+
       <input type='text' placeholder="Number of Seats Available" ref={seatsavailableonflight} value={seatsavailableonflightState} onChange={e => setseatsavailableonflightState(e.target.value)} /> <br></br>
+
       <input type='text' placeholder="Passengers" ref={passengers} value={passengersState} onChange={e => setPassengersState(e.target.value)} /> <br></br>
+
       <input type='text' placeholder="Duration" ref={duration} value={durationState} onChange={e => setDurationState(e.target.value)} /> <br></br>
+
       <input type='text' placeholder="Baggage Allowance" ref={baggageAllowance} value={baggageAllowanceState} onChange={e => setBaggageAllowanceState(e.target.value)} /> <br></br>
+      
       <input type='text' placeholder="Price" ref={price} value={priceState} onChange={e => setPriceState(e.target.value)} /> <br></br>
 
       {/* <input type = 'text' placeholder="Cabin" ref = {cabin} value={cabinState} onChange={e => setcabinState(e.target.value)}/> <br></br> */}

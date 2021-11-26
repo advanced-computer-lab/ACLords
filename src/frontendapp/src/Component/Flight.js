@@ -5,6 +5,9 @@ import {Grid} from "@material-ui/core"
 import Paper from "@material-ui/core/Paper"
 import {colors} from "@material-ui/core"
 import  {Container}  from '@material-ui/core'
+import './App.css';
+import {Link} from 'react-router-dom';
+
 
 export default function Flight({data}) {
 
@@ -12,9 +15,13 @@ export default function Flight({data}) {
         <div>
             <Grid container justify="center" >
                 <Grid item>
-                    <item><Paper style= {{width: 500, height: 150, backgroundColor:'violet' , justifyContent:'center'}}>
+                    <item><Paper style= {{width: 500, height: 150, backgroundColor:'blanchedalmond' , justifyContent:'center'}}>
                         <h3 key ={data._id} >{"From :  " + data.From}  </h3> 
-                        <h3 key ={data._id} >{"To :  " + data.To}  </h3> 
+                        <h3 key ={data._id} >{"To :  " + data.To}  </h3>
+                        {/* <Link component={Link} to="/url" style= {{justifyContent:'end'}}>  */}
+                        <Link to={{pathname:'/ViewDetails',state:data._id}} style= {{justifyContent:'end'}}> 
+                            Details...  
+                        </Link>
                     </Paper>
                     </item>
                 </Grid>

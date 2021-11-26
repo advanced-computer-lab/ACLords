@@ -125,19 +125,14 @@ export default function Search() {
             <input type='text'
                 placeholder='Arrival Date' ref={arrivalDate} /> <br></br>
 
-            {/* <input type='text'
-                placeholder='Cabin' ref={cabin} /> <br></br> */}
-
             <input type='text'
                 placeholder='Seats Available on Flight' ref={seatsavailableonflight} /> <br></br>
 
             {/* <input type='text' 
-        placeholder='Economy Class Seats' ref={numberOfEconomySeats}/> <br></br>
+            placeholder='Economy Class Seats' ref={numberOfEconomySeats}/> <br></br>
 
-
-        <input type='text' 
-        placeholder='Business Class Seats ' ref={numberOfBusinessSeats} /> <br></br> */}
-
+            <input type='text' 
+            placeholder='Business Class Seats ' ref={numberOfBusinessSeats} /> <br></br> */}
 
             <input type='text'
                 placeholder='Airport' ref={airport} /> <br></br>
@@ -151,16 +146,11 @@ export default function Search() {
             <input type='text'
                 placeholder='Price' ref={price} /> <br></br>
 
+            <input type='text' 
+            placeholder='Cabin' ref={cabin}/> <br></br>
 
-
-        <input type='text' 
-        placeholder='Cabin' ref={cabin}/> <br></br>
-
-
-        {/* <input type='text' 
-        placeholder='Seats Available on flight' ref={seatsAvailableOnFlight}/> <br></br> */}
-
-
+            {/* <input type='text' 
+            placeholder='Seats Available on flight' ref={seatsAvailableOnFlight}/> <br></br> */}
 
             <br></br>
 

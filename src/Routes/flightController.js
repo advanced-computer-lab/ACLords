@@ -51,6 +51,18 @@ exports.viewFlights = (req, res) => {                                           
         });
     };
 
+
+    exports.viewdetails = (req, res) => {
+      Flight.findById(req.params.id)
+        .then(result => {
+          res.send(result);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    };
+
+
     exports.updateFlight = (req,res)=>{
       Flight.findByIdAndUpdate(req.params.id,req.body).then(result =>{
   
