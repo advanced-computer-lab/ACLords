@@ -16,8 +16,8 @@ export default function Flight({data}) {
             <Grid container justify="center" >
                 <Grid item>
                     <item><Paper style= {{width: 500, height: 150, backgroundColor:'blanchedalmond' , justifyContent:'center'}}>
-                        <h3 key ={data._id} >{"From :  " + data.From}  </h3> 
-                        <h3 key ={data._id} >{"To :  " + data.To}  </h3>
+                        <h3 key ={data._id} >{"Departure Terminal :  " + data.From}  </h3> 
+                        <h3 key ={data._id} >{"Arrival Terminal :  " + data.To}  </h3>
                         {/* <Link component={Link} to="/url" style= {{justifyContent:'end'}}>  */}
                         <Link to={{pathname:'/ViewDetails',state:data._id}} style= {{justifyContent:'end'}}> 
                             Details...  
