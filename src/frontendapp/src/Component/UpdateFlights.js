@@ -142,7 +142,7 @@ export default function UpdateFlights({ row }) {
 
       <input type='text' placeholder="Passengers" ref={passengers} value={passengersState} onChange={e => setPassengersState(e.target.value)} /> <br></br>
 
-      <input type='text' placeholder="Duration" ref={duration} value={durationState} onChange={e => setDurationState(e.target.value)} /> <br></br>
+      <input type='text' placeholder="Trip Duration" ref={duration} value={durationState} onChange={e => setDurationState(e.target.value)} /> <br></br>
 
       <input type='text' placeholder="Baggage Allowance" ref={baggageAllowance} value={baggageAllowanceState} onChange={e => setBaggageAllowanceState(e.target.value)} /> <br></br>
       

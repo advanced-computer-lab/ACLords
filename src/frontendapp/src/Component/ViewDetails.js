@@ -27,8 +27,9 @@ export default function ViewDetails(data) {
             align="left"
             color="primary"
             >
-                From :  {flights.From} <br/>
-                To:  {flights.To} <br/>
+                Departure Terminal :  {flights.From} <br/>
+                Arrival Terminal :  {flights.To} <br/>
+                Flight Number : {flights.FlightNumber} <br/>
                 Departure Date :  {flights.DepartureDate}<br/>
                 Arrival Date:  {flights.ArrivalDate}<br/>
                 Cabin :  {flights.Cabin}<br/>
@@ -36,7 +37,8 @@ export default function ViewDetails(data) {
                 Business Class Seats :  {flights.BusinessClassSeats} <br/> */}
                 Airport:  {flights.Airport} <br/>
                 Passengers :  {flights.Passengers}<br/>
-                Duration :  {flights.Duration} <br/>
+                Seats Available On Flight : {flights.SeatsAvailableOnFlight} <br/>
+                Trip Duration :  {flights.Duration} <br/>
                 Baggage Allowance:  {flights.BaggageAllowance} <br/>
                 Price :  {flights.Price} <br/>
 

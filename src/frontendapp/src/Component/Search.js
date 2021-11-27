@@ -138,7 +138,7 @@ export default function Search() {
                 placeholder='Airport' ref={airport} /> <br></br>
 
             <input type='text'
-                placeholder='Duration' ref={duration} /> <br></br>
+                placeholder='Trip Duration' ref={duration} /> <br></br>
 
             <input type='text'
                 placeholder='Baggage Allowance' ref={baggageAllowance} /> <br></br>
