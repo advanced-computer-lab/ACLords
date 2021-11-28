@@ -25,6 +25,17 @@ exports.viewFlights = (req, res) => {                                           
         console.log(err);
       });
     };
+    
+    exports.bookFlight = (req, res) => {                                               
+      console.log("ta2reban kda")
+    Flight.findById(req.params.id)
+        .then(result => {
+          res.send(result);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    };
 
     exports.searchFlights = (req, res) => { 
     Flight.find(req.body)

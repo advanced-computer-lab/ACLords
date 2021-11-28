@@ -8,7 +8,7 @@ import { useState } from 'react'
 
 export default function UpdateFlights({ row }) {
   //const [from,setFrom] = UseState([]);
-  const id = row._id;
+ // const id = row._id;
   const from = useRef(row.From);
   const to = useRef(row.To);
   const flightNumber = useRef(row.FlightNumber);

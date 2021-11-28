@@ -1,10 +1,10 @@
 import React from 'react'
-import UpdateFlights from './UpdateFlights'
+//import UpdateFlights from './UpdateFlights'
 //import {useRef} from 'react'
 import {Grid} from "@material-ui/core"
 import Paper from "@material-ui/core/Paper"
-import {colors} from "@material-ui/core"
-import  {Container}  from '@material-ui/core'
+//import {colors} from "@material-ui/core"
+//import  {Container}  from '@material-ui/core'
 import './App.css';
 import {Link} from 'react-router-dom';
 
@@ -20,15 +20,11 @@ export default function Flight({data}) {
                         <h3 key ={data._id} >{"Arrival Terminal :  " + data.To}  </h3>
                         {/* <Link component={Link} to="/url" style= {{justifyContent:'end'}}>  */}
                         <Link to={{pathname:'/ViewDetails',state:data._id}} style= {{justifyContent:'end'}}> 
-                            Details...  
+                            More Details...  
                         </Link>
                     </Paper>
                     </item>
                 </Grid>
-
-                
-
-                
             </Grid>
 
             <br/>
@@ -39,7 +35,7 @@ export default function Flight({data}) {
 
             
             
-            {/* <label>{"Flight Date :  " + data.FlightDate +", "}  </label>
+            /* <label>{"Flight Date :  " + data.FlightDate +", "}  </label>
             <label>{"Cabin :  " + data.Cabin +", "}  </label>
             <label>{"Seats available on flight :  " + data.SeatsAvailableOnFlight +", "}  </label>
             <label>{"Flight Number :  " + data.FlightNumber +", "}  </label>
@@ -51,16 +47,16 @@ export default function Flight({data}) {
             <label>{"Passengers :  " + data.passengers}  </label>
             <label>{"Duration :  " + data.duration}  </label>
             <label>{"Baggage Allowance :  " + data.baggageAllowance}  </label>
-            <label>{"Price :  " + data.price}  </label>  */}
+            <label>{"Price :  " + data.price}  </label>  */
 
 
 
 
-            {/* <button onClick={() => {UpdateFlights(data._id)}}> Edit </button> */}
-            {/* <button onClick={() => deleteMethod(data._id)}> Delete </button>  */}
+            /* <button onClick={() => {UpdateFlights(data._id)}}> Edit </button> */
+            /* <button onClick={() => deleteMethod(data._id)}> Delete </button>  */
 
 
-            {/* <UpdateFlights row={data}> Edit  </UpdateFlights>   !!!!!!!!!!!!!!!!!!!! DONT DELETE THIS!!!!!!!!!!   */}
+            /* <UpdateFlights row={data}> Edit  </UpdateFlights>   !!!!!!!!!!!!!!!!!!!! DONT DELETE THIS!!!!!!!!!!   */
             
         
 }
