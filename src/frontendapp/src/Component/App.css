@@ -22,3 +22,17 @@ nav {
 .flights-list {
   display: "flex";
 }
+
+.BookFlight {
+  background-color: primary;
+  width: 10rem;
+  height: 2rem;
+}
+
+.BookFlight:hover {
+  background-color: rgb(11, 243, 243);
+  /* background-color: rgb(11, 243, 243); */
+  color: black;
+  width: 10rem;
+  height: 2rem;
+}

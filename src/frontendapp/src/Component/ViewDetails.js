@@ -6,16 +6,18 @@ import { Typography, Button } from '@material-ui/core';
 //import ViewFlights from './ViewFlights';
 //import BookFlight from './BookFlight';
 import { useHistory } from 'react-router-dom';
-
+import './App.css';
 
 export default function ViewDetails(data) {
     const [flights, setFlights] = useState([]);
     const history = useHistory();
-    const id = data.id;
+    //const id = data._id;
+    //  console.log("hena before");
+    //  console.log(data);
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/ViewDetails/${data.location.state}`).then(res => {
-            console.log(res.data)
+        axios.get(`http://localhost:8000/ViewDetails/${data.location.state._id}`).then(res => {
+            // console.log(res.data)
             setFlights(res.data);
         })
     }
@@ -25,7 +27,7 @@ export default function ViewDetails(data) {
     function handleClick() {
         if (window.confirm("Are you sure you want to book this flight?")) {
             history.push({
-                pathname:"/ViewDetails/BookFlight", state: id
+                pathname:"/ViewDetails/BookFlight", state: data.location.state
             });
         }
     }
@@ -56,7 +58,7 @@ export default function ViewDetails(data) {
                 <br />
 
 
-                <Button onClick={handleClick} variant="outlined">Book Flight</Button>
+                <button className="BookFlight" type="button" onClick={handleClick} variant="outlined">Book Flight</button>
             </Typography>
         </div>
     )

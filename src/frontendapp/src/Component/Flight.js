@@ -6,6 +6,7 @@ import Paper from "@material-ui/core/Paper"
 //import {colors} from "@material-ui/core"
 //import  {Container}  from '@material-ui/core'
 import './App.css';
+import {v4 as uuidv4} from 'uuid';
 import {Link} from 'react-router-dom';
 
 
@@ -16,10 +17,10 @@ export default function Flight({data}) {
             <Grid container justify="center" >
                 <Grid item>
                     <item><Paper style= {{width: 500, height: 150, backgroundColor:'blanchedalmond' , justifyContent:'center'}}>
-                        <h3 key ={data._id} >{"Departure Terminal :  " + data.From}  </h3> 
-                        <h3 key ={data._id} >{"Arrival Terminal :  " + data.To}  </h3>
+                        <h3 key ={uuidv4()} >{"Departure Terminal :  " + data.From}  </h3> 
+                        <h3 key ={uuidv4()} >{"Arrival Terminal :  " + data.To}  </h3>
                         {/* <Link component={Link} to="/url" style= {{justifyContent:'end'}}>  */}
-                        <Link to={{pathname:'/ViewDetails',state:data._id}} style= {{justifyContent:'end'}}> 
+                        <Link to={{pathname:'/ViewDetails',state:data}} style= {{justifyContent:'end'}}> 
                             More Details...  
                         </Link>
                     </Paper>

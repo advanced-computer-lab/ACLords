@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useRef } from 'react'
 import Flight from './Flight';
+import {v4 as uuidv4} from 'uuid';
 
 
 export default function Search() {
@@ -157,7 +158,7 @@ export default function Search() {
             <button onClick={SearchMethod}>Search</button>
 
             <br></br>
-            {search.map(s => { return <Flight data={s} /> })}
+            {search.map(s => { return <Flight key={uuidv4()}data={s} /> })}
         </div>
     )
 
