@@ -9,9 +9,6 @@ import { useHistory } from 'react-router-dom';
 import './App.css';
 
 export default function ViewReturnFlightDetails(data, returnFlag) {
-    console.log(data);
-    console.log(returnFlag);
-    console.log("bos foo2");
     const [flights, setFlights] = useState([]);
     const history = useHistory();
     //const id = data._id;

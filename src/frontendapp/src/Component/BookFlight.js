@@ -8,22 +8,25 @@ import SearchBooking from './SearchBooking';
 
 
 export default function BookFlight(data) {                              
-    // console.log("out");
-    useEffect(()=>{  
-        // console.log(data);                   
-        axios.get(`http://localhost:8000/ViewDetails/BookFlight/ViewReturnFlights/${data.location.state._id}`).then(res=>{
-        // console.log(res.data);
-        // console.log(flight);
-        })
-    },[]);
-
-
-    var bodysearch = {
-        From:data.location.state.To,
-        To:data.location.state.From
-
+    console.log("out");
+    console.log(data)
+    console.log("in");
+    var body = {
+        userId: '61a6391f7053ae7baba4fb02',
+        flightId: data.location.state._id
     };
-        
+
+    useEffect(()=>{  
+        axios.post("http://localhost:8000/CompleteBooking/", body).then(res => {
+            console.log(res);
+        }).catch()
+        }, []);
+   
+        var bodysearch = {
+            From:data.location.state.To,
+            To:data.location.state.From
+    
+        };
 
     return (
         <div>

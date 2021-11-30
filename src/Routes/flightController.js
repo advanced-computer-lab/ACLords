@@ -1,4 +1,5 @@
 const Flight = require('../models/Flights');
+const Reservation = require('../models/Reservation');
 // const search = require('../Component/Search');
 exports.addFlight = (req, res) => {
     
@@ -14,6 +15,20 @@ exports.addFlight = (req, res) => {
       });
   };
 // getting all the flights
+
+exports.completeBooking = (req, res) => {
+    
+  const reservation = new Reservation(req.body)
+
+  reservation.save()
+    .then(result => {
+      res.send(result);
+      console.log("added");
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
 
 exports.viewFlights = (req, res) => {                                               ``
     Flight.find({

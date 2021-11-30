@@ -8,10 +8,7 @@ import { Typography, Button } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import './App.css';
 
-export default function ViewDetails(data, returnFlag) {
-    console.log(data);
-    console.log(returnFlag);
-    console.log("bos foo2");
+export default function ViewDetails(data) {
     const [flights, setFlights] = useState([]);
     const history = useHistory();
     //const id = data._id;

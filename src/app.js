@@ -45,7 +45,7 @@ app.get("/edit", (req,res)=>{
   app.put("/DeleteFlight/:id",flightController.deleteFlight);
   app.get("/ViewDetails/:id",flightController.viewdetails);
   app.get("/ViewDetails/BookFlight/:id",flightController.bookFlight);
-
+  app.post("/CompleteBooking", flightController.completeBooking);
 
 
 app.listen(port, () => {
