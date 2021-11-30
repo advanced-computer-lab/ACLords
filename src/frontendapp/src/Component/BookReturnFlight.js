@@ -11,7 +11,7 @@ export default function BookFlight(data) {
     // console.log("out");
     useEffect(()=>{  
         // console.log(data);                   
-        axios.get(`http://localhost:8000/ViewDetails/BookFlight/ViewReturnFlights/${data.location.state._id}`).then(res=>{
+        axios.get(`http://localhost:8000/ViewDetails/${data.location.state._id}`).then(res=>{
         // console.log(res.data);
         // console.log(flight);
         })

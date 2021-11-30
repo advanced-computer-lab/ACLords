@@ -10,7 +10,7 @@ import {v4 as uuidv4} from 'uuid';
 import {Link} from 'react-router-dom';
 
 
-export default function Flight({data}) {
+export default function ReturnFlight({data}) {
 
     return (
         <div>
@@ -20,7 +20,7 @@ export default function Flight({data}) {
                         <h3 key ={uuidv4()} >{"Departure Terminal :  " + data.From}  </h3> 
                         <h3 key ={uuidv4()} >{"Arrival Terminal :  " + data.To}  </h3>
                         {/* <Link component={Link} to="/url" style= {{justifyContent:'end'}}>  */}
-                        <Link to={{pathname:'/ViewDetails',state:data}} style= {{justifyContent:'end'}}> 
+                        <Link to={{pathname:'/ViewDetails/BookFlight/ViewReturnFlightDetails',state:data}} style= {{justifyContent:'end'}}> 
                             More Details...  
                         </Link>
                     </Paper>

@@ -26,16 +26,7 @@ exports.viewFlights = (req, res) => {                                           
       });
     };
     
-    exports.bookFlight = (req, res) => {                                               
-      console.log("ta2reban kda")
-    Flight.findById(req.params.id)
-        .then(result => {
-          res.send(result);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    };
+    
 
     exports.searchFlights = (req, res) => { 
     Flight.find(req.body)
@@ -53,7 +44,7 @@ exports.viewFlights = (req, res) => {                                           
 
 
     exports.getFlight = (req, res) => {
-      Flight.find({Name:req.params.name})
+      Flight.findById(req.params.id)
         .then(result => {
           res.send(result);
         })
@@ -62,6 +53,16 @@ exports.viewFlights = (req, res) => {                                           
         });
     };
 
+    exports.bookFlight = (req, res) => {                                               
+    Flight.findById(req.params._id)
+        .then(result => {
+          
+          res.send(result);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    };
 
     exports.viewdetails = (req, res) => {
       Flight.findById(req.params.id)

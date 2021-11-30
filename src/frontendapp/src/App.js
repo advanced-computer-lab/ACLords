@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Switch} from "react-router-dom"
 import Nav from './Component/Nav';
 import ViewDetails from './Component/ViewDetails'
 import BookFlight from './Component/BookFlight'
+import ViewReturnFlightDetails from './Component/ViewReturnFlightDetails'
 
 export default function App() {
   return (
@@ -22,6 +23,8 @@ export default function App() {
      <Route path="/Search" component={Search} exact/>
      <Route path="/ViewDetails" component={ViewDetails} exact/>
      <Route path="/ViewDetails/BookFlight" component={BookFlight} exact/>
+     <Route path="/ViewDetails/BookFlight/ViewReturnFlightDetails" component={ViewReturnFlightDetails} exact/>
+
      </Switch>
 
      </div>

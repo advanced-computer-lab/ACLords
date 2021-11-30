@@ -1,5 +1,5 @@
 import React from 'react'
-import Flight from './Flight';
+import ReturnFlight from './ReturnFlight';
 import { useState, useEffect } from 'react';
 import Search from './Search';
 import axios from 'axios';
@@ -23,9 +23,8 @@ export default function SearchBooking({body}) {
 
           },[])
     return (
-
-        <div>
-             {searchbooking.map(s => { return <Flight key = {uuidv4()}data={s} /> })}
-         </div>
+        <><h1>Return Flights</h1><div>
+            {searchbooking.map(s => { return <ReturnFlight key={uuidv4()} data={s} />; })}
+        </div></>
     )
 }

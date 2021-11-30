@@ -8,7 +8,7 @@ import { Typography, Button } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import './App.css';
 
-export default function ViewDetails(data, returnFlag) {
+export default function ViewReturnFlightDetails(data, returnFlag) {
     console.log(data);
     console.log(returnFlag);
     console.log("bos foo2");
@@ -19,7 +19,7 @@ export default function ViewDetails(data, returnFlag) {
     //  console.log(data);
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/ViewDetails/${data.location.state._id}`).then(res => {
+        axios.get(`http://localhost:8000/ViewDetails/BookFlight/ViewReturnFlightDetails/${data.location.state._id}`).then(res => {
             // console.log(res.data)
             setFlights(res.data);
         })
@@ -28,9 +28,9 @@ export default function ViewDetails(data, returnFlag) {
 
 
     function handleClick() {
-        if (window.confirm("Are you sure you want to book this flight?")) {
+        if (window.confirm("Are you sure you want to book this return flight?")) {
             history.push({
-                pathname:"/ViewDetails/BookFlight", state: data.location.state
+                pathname:"/MyFlights", state: data.location.state
             });
         }
     }
