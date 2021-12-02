@@ -94,9 +94,8 @@ export default function UpdateFlights({ row }) {
       BaggageAllowance: baggageAllowance.current.value,
       Price: price.current.value
     };
-    const strFlight = JSON.stringify(newFlight);
 
-    if (window.confirm("Are you sure you want to delete this flight?" + strFlight)) {
+    if (window.confirm("Are you sure you want to delete this flight?" )) {
       axios
         .put("http://localhost:8000/DeleteFlight/" + row._id, newFlight)
         .then((res) => {

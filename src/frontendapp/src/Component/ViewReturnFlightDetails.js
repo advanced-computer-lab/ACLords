@@ -7,8 +7,9 @@ import { Typography, Button } from '@material-ui/core';
 //import BookFlight from './BookFlight';
 import { useHistory } from 'react-router-dom';
 import './App.css';
+import CompleteReturnBooking from './CompleteReturnBooking';
 
-export default function ViewReturnFlightDetails(data, returnFlag) {
+export default function ViewReturnFlightDetails(data) {
     const [flights, setFlights] = useState([]);
     const history = useHistory();
     //const id = data._id;
@@ -16,7 +17,7 @@ export default function ViewReturnFlightDetails(data, returnFlag) {
     //  console.log(data);
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/ViewDetails/BookFlight/ViewReturnFlightDetails/${data.location.state._id}`).then(res => {
+        axios.get(`http://localhost:8000/ViewDetails/BookFlight/ViewReturnflightDetails/${data.location.state._id}`).then(res => {
             // console.log(res.data)
             setFlights(res.data);
         })
@@ -25,7 +26,9 @@ export default function ViewReturnFlightDetails(data, returnFlag) {
 
 
     function handleClick() {
-        if (window.confirm("Are you sure you want to book this return flight?")) {
+        if (window.confirm("Are you sure you want to book this flight?")) {
+            CompleteReturnBooking(data);
+            console.log("hanewsal");
             history.push({
                 pathname:"/MyFlights", state: data.location.state
             });
@@ -58,7 +61,7 @@ export default function ViewReturnFlightDetails(data, returnFlag) {
                 <br />
 
 
-                <button className="BookFlight" type="button" onClick={handleClick} variant="outlined">Book Flight</button>
+                <button className="BookReturnFlight" type="button" onClick={handleClick} variant="outlined">Book Return Flight</button>
             </Typography>
         </div>
     )
