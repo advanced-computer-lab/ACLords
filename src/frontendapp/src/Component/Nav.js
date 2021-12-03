@@ -27,6 +27,9 @@ function Nav(){
               <Link style={navStyle} to='/MyFlights'>
               <li>My Flights</li>
               </Link>
+              <Link style={navStyle} to='/Login'>
+              <li>My Profile</li>
+              </Link>
 
           </ul>
         </nav>

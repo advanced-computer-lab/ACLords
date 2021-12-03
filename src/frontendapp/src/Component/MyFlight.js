@@ -6,15 +6,18 @@ import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 import { useHistory } from 'react-router';
+import CancelBooking from './CancelBooking';
 
 
 export default function MyFlight({ data }) {
+    console.log(data)
+    console.log("ggggggg")
     const history = useHistory();
 
     function handleClick() {
         if (window.confirm("Are you sure you want to cancel this booking?")) {
-
-            history.push("/CancelBooking")
+            CancelBooking(data._id);
+            history.push("/MyFlights")
         }
     }
 

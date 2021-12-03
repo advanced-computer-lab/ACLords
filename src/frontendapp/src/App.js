@@ -11,6 +11,8 @@ import BookFlight from './Component/BookFlight'
 import ViewReturnFlightDetails from './Component/ViewReturnFlightDetails'
 import MyFlights from './Component/MyFlights'
 import ViewMyFlightDetails from './Component/viewMyFlightDetails'
+import UpdateUser from './Component/UpdateUser'
+import Login from './Component/Login'
 
 export default function App() {
   return (
@@ -29,6 +31,7 @@ export default function App() {
      <Route path="/ViewDetails" component={ViewDetails} exact/>
      <Route path="/ViewDetails/BookFlight" component={BookFlight} exact/>
      <Route path="/ViewDetails/BookFlight/ViewReturnFlightDetails" component={ViewReturnFlightDetails} exact/>
+     <Route path="/Login" component={Login} exact/>
      </Switch>
 
      </div>

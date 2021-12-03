@@ -2,25 +2,26 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import MyFlight from './MyFlight';
+import Reservation from './Reservation';
 import { v4 as uuidv4 } from 'uuid';
 
 export default function MyFlights(reservations) {
+    console.log(reservations)
+    const [flights, setFlights] = useState([]);
 
-    const [flights,setFlights] = useState([]);    
-
-        useEffect(() => {
-            axios.get(`http://localhost:8000/ViewFlights`).then(res =>{
+    useEffect(() => {
+            axios.get(`http://localhost:8000/MyFlights`).then(res => {
                 console.log(res);
                 setFlights(res.data)
             })
-
-        })
-
+        
+    }, [])
+console.log(flights)
     return (
         <div className="flights-list">
             {flights.map((f, index) => {
 
-                return <MyFlight key={uuidv4()} data={f} />
+                return <Reservation key={uuidv4()} data={f} />
 
             })}
         </div>
@@ -49,6 +50,6 @@ export default function MyFlights(reservations) {
     // }, []);
     // setFlights(myFlights);
 
-   
+
 
 }

@@ -38,6 +38,7 @@ export default function ViewDetails(data) {
         if(data.location.state.SeatsAvailableOnFlight>0){
 
             if (window.confirm("Are you sure you want to book this flight?")) {
+                console.log(data)
                 CompleteBooking(data);
                 emailjs.send(serviceID,templateID,{to_name:"Danial",id:data.location.state._id,send_to:"danial.amir97@gmail.com"},userID)
             //data.location.state.SeatsAvailableOnFlight= data.location.state.SeatsAvailableOnFlight-1;

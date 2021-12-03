@@ -41,7 +41,7 @@ app.get("/", (req, res) => {
 app.post("/CreateFlight", flightController.addFlight)
 app.post("/Search", flightController.searchFlights);
 app.get("/ViewFlights", flightController.viewFlights);
-// app.post("/GetBookedFlights", flightController.myFlights);
+app.get("/MyFlights", flightController.myFlightsP);
 app.get("/MyFlights/ViewMyFlightDetails/:id", flightController.viewMyFlightDetails);
 app.put("/UpdateFlights/:id", flightController.updateFlight);
 app.put("/DeleteFlight/:id", flightController.deleteFlight);
@@ -51,7 +51,10 @@ app.get("/ViewDetails/BookFlight/ViewReturnFlightDetails/:id", flightController.
 app.put("/MyFlights/CancelBooking/:id", flightController.cancelBooking);
 app.post("/CompleteBooking", flightController.completeBooking);
 app.post("/CompleteReturnBooking", flightController.completeReturnBooking);
-app.get("/GetBookedFlights", flightController.getBookedFlights)
+app.post("/GetBookedFlights", flightController.getBookedFlights);
+app.get("/User/:id",userController.getUser);
+app.put("/UpdateUser/:id",userController.updateUser);
+
 
 
 app.listen(port, () => {
