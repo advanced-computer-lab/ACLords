@@ -11,6 +11,7 @@ import CompleteBooking from './CompleteBooking';
 import UpdateFlights from './UpdateFlights';
 import emailjs from 'emailjs-com'
 import {init} from 'emailjs-com'
+import flight from './Flight'
 
 init("user_cS7Y0uXoWVDpEmlzxTkDa");
 
@@ -19,6 +20,7 @@ const templateID = 'template_5pw7nun';
 const userID = 'user_cS7Y0uXoWVDpEmlzxTkDa';
 
 export default function ViewDetails(data) {
+    console.log(data.location.state._id)
     const [flights, setFlights] = useState([]);
     const history = useHistory();
     //const id = data._id;
@@ -38,12 +40,44 @@ export default function ViewDetails(data) {
         if(data.location.state.SeatsAvailableOnFlight>0){
 
             if (window.confirm("Are you sure you want to book this flight?")) {
+                console.log(data.location.state.SeatsAvailableOnFlight)
+                data.location.state.SeatsAvailableOnFlight=parseInt(data.location.state.SeatsAvailableOnFlight)-1;
+                data.location.state.Passengers=parseInt(data.location.state.Passengers)+1;
+                console.log(data.location.state.SeatsAvailableOnFlight)
+                data.location.state.SeatsAvailableOnFlight=data.location.state.SeatsAvailableOnFlight.toString();
+                data.location.state.Passengers=data.location.state.Passengers.toString();
+                //console.log("hah")
                 console.log(data)
-                CompleteBooking(data);
+
+                var newFlight = {
+                    From: data.location.state.From,
+                    To: data.location.state.To,
+                    FlightNumber: data.location.state.FlightNumber,
+                    DepartureDate: data.location.state.DepartureDate,
+                    ArrivalDate: data.location.state.ArrivalDate,
+                    // EconomySeats:numberOfEconomySeats.current.value,
+                    // BusinessClassSeats:numberOfBusinessSeats.current.value,
+                    Airport: data.location.state.Airport,
+                    Cabin: data.location.state.Cabin,
+                    SeatsAvailableOnFlight: data.location.state.SeatsAvailableOnFlight,
+                    Passengers: data.location.state.Passengers,
+                    Duration: data.location.state.Duration,
+                    BaggageAllowance: data.location.state.BaggageAllowance,
+                    Price: data.location.state.Price
+              
+                  };
+
+
+                axios.put("http://localhost:8000/UpdateFlights/" + data.location.state._id, newFlight)
+                .then((res) => {
+                console.log("success");})
+                .catch((err) => {
+                console.log("Error!");
+                });
+
+                CompleteBooking(newFlight);
                 emailjs.send(serviceID,templateID,{to_name:"Danial",id:data.location.state._id,send_to:"danial.amir97@gmail.com"},userID)
             //data.location.state.SeatsAvailableOnFlight= data.location.state.SeatsAvailableOnFlight-1;
-
-
           //     data.location.state.SeatsAvailableOnFlight-=1;
 // value={data.location.state.SeatsAvailableOnFlight} onChange={e => setcabinState(e.target.value)
                 
