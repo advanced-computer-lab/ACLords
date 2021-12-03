@@ -17,6 +17,7 @@ export default function MyFlights(reservations) {
         
     }, [])
 console.log(flights)
+console.log("de el flights")
     return (
         <div className="flights-list">
             {flights.map((f, index) => {

@@ -12,7 +12,7 @@ import axios from 'axios';
 
 
 export default function Reservation({ data }) {
-
+console.log(data)
     // useEffect(() => {
     //     axios.post(`http://localhost:8000/Search`,).then(res =>{
     //         console.log(res);
@@ -24,7 +24,7 @@ export default function Reservation({ data }) {
         <div>
             <Grid container justify="center" >
                 <Grid item>
-                    <item><Paper style={{ width: 300, height: 650, backgroundColor: 'blanchedalmond', justifyContent: 'center' }}>
+                    <item><Paper style={{ width: 300, height: 350, backgroundColor: 'blanchedalmond', justifyContent: 'center' }}>
                         <h6 key={uuidv4()} >{"Departure Terminal :  " + data.From}  </h6>
                         <h6 key={uuidv4()} >{"Arrival Terminal :  " + data.To}  </h6>
                         <h6 key={uuidv4()} >{"Flight Number :  " + data.FlightNumber}  </h6>
