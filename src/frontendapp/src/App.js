@@ -13,16 +13,26 @@ import MyFlights from './Component/MyFlights'
 import ViewMyFlightDetails from './Component/viewMyFlightDetails'
 import UpdateUser from './Component/UpdateUser'
 import Login from './Component/Login'
+import background from "./Component/plane.jpg";
+import CreateUser from './Component/CreateUser'
 
 export default function App() {
   return (
     
 <Router>
    
-   <div className="App">
+   <div className="App" style={{
+        backgroundImage: `url(${background})`,
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        width: '100vw',
+        height: '100vh'
+}}>
      <Nav />
      <Switch>
      <Route path="/" component={Home} exact/>
+     <Route path="/CreateUser" component={CreateUser} exact/>
      <Route path="/CreateFlight" component={CreateFlight} exact/>
      <Route path="/ViewFlights" component={ViewFlights} exact/>
      <Route path="/Search" component={Search} exact/>
@@ -37,20 +47,20 @@ export default function App() {
      </div>
 
 </Router>
-    // <>
-    //   <CreateFlight/> 
-    //   <ViewFlights/>
-    //    {/* <Search/> */}
-    //    {/* <UpdateFlights/> */}
-    // </>
     
   )
 }
+function handleClick(){
 
+}
 
 const Home= () =>(
   <div>
     <h1>Welcome To ACLords Official Website</h1>
+    <button className="Login" type="button" onClick={handleClick} variant="outlined">Login</button>
+    <button className="Create New User" type="button" onClick={handleClick} variant="outlined">Create New User</button>
+    <button className="Continue as a Guest User" type="button" onClick={handleClick} variant="outlined">Continue as a Guest User</button>
+
   </div>
 )
 

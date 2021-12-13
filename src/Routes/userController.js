@@ -1,6 +1,7 @@
 const User = require('../models/Users');
-exports.addUser = (req, res) => {
-    
+
+
+exports.addUser = (req, res) => {    
     const user = new User(req.body)
 
     user.save()

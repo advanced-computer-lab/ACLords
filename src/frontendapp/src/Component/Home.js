@@ -7,7 +7,7 @@ export default function Home(){
 
         return (
             <div>
-                <button onClick={ViewFlights}>View Flights</button>
+                <button className="BookFlight" type="button" onClick={handleClick} variant="outlined">Book Flight</button>
             </div>
         );
     

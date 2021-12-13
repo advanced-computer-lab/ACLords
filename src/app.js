@@ -1,11 +1,12 @@
-
 const express = require("express");
 const mongoose = require('mongoose');
 const flightController = require('./Routes/flightController');
 const userController = require('./Routes/userController');
 const bodyparser = require("body-parser");
 const app = express();
+
 // App variables
+
 var cors = require('cors');
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
@@ -30,7 +31,6 @@ mongoose.connect("mongodb+srv://ACLords:1234qwer@airlinedb.e4p3f.mongodb.net/Air
 
 app.use(cors());
 
-
 app.get("/edit", (req, res) => {
   res.render('EditFlight')
 })
@@ -54,6 +54,7 @@ app.post("/CompleteReturnBooking", flightController.completeReturnBooking);
 app.post("/GetBookedFlights", flightController.getBookedFlights);
 app.get("/User/:id",userController.getUser);
 app.put("/UpdateUser/:id",userController.updateUser);
+app.get("/ViewUsers", userController.viewUsers);
 
 
 
