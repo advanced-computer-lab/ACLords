@@ -5,6 +5,7 @@ const userController = require('./Routes/userController');
 const bodyparser = require("body-parser");
 const app = express();
 
+
 // App variables
 
 var cors = require('cors');
@@ -56,7 +57,7 @@ app.get("/User/:id",userController.getUser);
 app.put("/UpdateUser/:id",userController.updateUser);
 app.get("/ViewUsers", userController.viewUsers);
 
-
+module.exports = app
 
 app.listen(port, () => {
   console.log(`Listening to requests on http://localhost:${port}`);
