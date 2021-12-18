@@ -4,8 +4,8 @@ import SearchBooking from './SearchBooking';
 export default function BookFlight(data) {                              
     console.log(data)
         var bodysearch = {
-            From:data.location.state.To,
-            To:data.location.state.From
+            From:data.To,
+            To:data.From
         };
 
     return (
