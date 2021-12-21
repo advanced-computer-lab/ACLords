@@ -30,7 +30,15 @@ const userSchema = new Schema({
     type: String,
     required: false
   },
-  MobileNumber: {
+  CountryCode:{
+    type:String,
+    required: false
+  }, 
+  HomeAddress:{
+    type:String,
+    required: false
+  },
+  TelephoneNumber: {
     type: String,
     required: false
   },

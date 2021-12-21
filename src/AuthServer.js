@@ -47,8 +47,10 @@ app.delete('/logout', (req, res)=>{
     refreshTokens= refreshTokens.filter(token => token !== req.body.token)
     res.sendStatus(204)
 })
+app.post("/SignUp", userController.addUser)
 
 app.post('/SignUp', (req, res) => {
+    console.log(req.body);
     userController.addUser(req.body);
 }
 )

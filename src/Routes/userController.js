@@ -1,21 +1,23 @@
 const User = require('../models/Users');
 
 
-exports.addUser = (req, res) => {    
-    const user = new User(req.body)
+exports.addUser = (req, res) => {
 
-    user.save()
-      .then(result => {
-        res.send(result);
-        console.log("added");
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
+  const user = new User(req.body)
+
+  user.save()
+    .then(result => {
+      res.send(result);
+      console.log("added");
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
 // getting all the users
 
-exports.viewUsers = (req, res) => {                                               ``
+exports.viewUsers = (req, res) => {
     User.find({})
       .then(result => {
         res.send(result);
