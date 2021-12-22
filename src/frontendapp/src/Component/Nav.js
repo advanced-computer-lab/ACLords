@@ -11,23 +11,27 @@ function Nav(){
 
     return(
         <nav>
-          <h3>
+            
+            <a href='/' className='nav-button'>
+                <h3>ACLords</h3>
+            </a>
+          {/* <h3>
               ACLords
-          </h3>
+          </h3> */}
           <ul className="nav-links">
-              <Link style={navStyle} to='/ViewFlights'>
+              <Link style={navStyle} to='/ViewFlights' className='nav-button'>
               <li>View Flights</li>
               </Link>
-              <Link style={navStyle} to='/CreateFlight'>
+              <Link style={navStyle} to='/CreateFlight' className='nav-button'>
               <li>Create Flight</li>
               </Link>
-              <Link style={navStyle} to='/Search'>
+              <Link style={navStyle} to='/Search' className='nav-button'>
               <li>Search Flights</li>
               </Link>
-              <Link style={navStyle} to='/MyFlights'>
+              <Link style={navStyle} to='/MyFlights' className='nav-button'>
               <li>My Flights</li>
               </Link>
-              <Link style={navStyle} to='/Login'>
+              <Link style={navStyle} to='/UpdateUser' className='nav-button'>
               <li>My Profile</li>
               </Link>
 

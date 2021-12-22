@@ -5,7 +5,7 @@ const textLight = "#eaf2f4";
 const textDark = "#0D0D0D";
 const borderLight = "rgba(206,212,218, .993)";
 
-export const register = theme => ({
+export const login = theme => ({
   main: {
     marginTop: theme.spacing(4),
     marginBottom: theme.spacing(4),
@@ -72,7 +72,7 @@ export const register = theme => ({
     padding: `${theme.spacing(1.5)}px ${theme.spacing(1)}px`,
     borderRadius: "8px",
     border: "1.4px solid",
-    boxShadow: "1px 2px 20px rgba(30,30,30,0.29457423) ",
+    boxShadow: "1px 2px 20px rgba(169,198,217,0.29457423) ",
     borderColor: borderLight,
 
     "&:hover": {

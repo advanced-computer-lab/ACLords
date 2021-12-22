@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
-import { register } from "./RegistrationStyles";
+import { login } from "./LoginStyles";
 import InputAdornment from "@material-ui/core/InputAdornment";
 
 import CssBaseline from "@material-ui/core/CssBaseline"; 
@@ -17,8 +17,9 @@ import VisibilityOffTwoToneIcon from "@material-ui/icons/VisibilityOffTwoTone";
 import CloseIcon from "@material-ui/icons/Close";
 import SignUp from "./SignUp";
 import LoginHelper from "./LoginHelper";
+import { useHistory } from 'react-router-dom';
 
-class Registration extends Component {
+class Login extends Component {
   state = {
     firstName: "",
     lastName: "",
@@ -58,28 +59,15 @@ class Registration extends Component {
     }
     return true;
   };
-  submitRegistration = e => {
+  submitLogin = e => {
     e.preventDefault();
-    if (!this.passwordMatch()) {
-      this.setState({
-        errorOpen: true,
-        error: "Passwords don't match"
-      });
-    }
+
     const newUserCredentials = {
-      FirstName: this.state.firstName,
-      LastName: this.state.lastName,
-      HomeAddress: this.state.homeAddress,
-      CountryCode: this.state.countryCode,
-      TelephoneNumber: this.state.telephoneNumber,
-      PassportNumber: this.state.passportNumber,
       Email: this.state.email,
       Password: this.state.password,
-
     };
-   
-    SignUp(newUserCredentials)
-    
+    LoginHelper(newUserCredentials)
+    window.open("/ViewFlights")
     
     //dispath to userActions
   };
@@ -87,94 +75,16 @@ class Registration extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className="signup-container">
       <div className={classes.main}>
         <CssBaseline />
-        
+
         <Paper className={classes.paper}>
        
           <form
             className={classes.form}
-            onSubmit={() => this.submitRegistration}
+            onSubmit={() => this.submitLogin}
           >
-            <FormControl required fullWidth margin="normal">
-              <InputLabel htmlFor="firstName" className={classes.labels}>
-                First Name
-              </InputLabel>
-              <Input
-                name="firstName"
-                type="text"
-                autoComplete="firstName"
-                className={classes.inputs}
-                disableUnderline={true}
-                onChange={this.handleChange("firstName")}
-              />
-            </FormControl>
-            <FormControl required fullWidth margin="normal">
-              <InputLabel htmlFor="lastName" className={classes.labels}>
-                Last Name
-              </InputLabel>
-              <Input
-                name="lastName"
-                type="text"
-                autoComplete="lastName"
-                className={classes.inputs}
-                disableUnderline={true}
-                onChange={this.handleChange("lastName")}
-              />
-            </FormControl>
-            <FormControl required fullWidth margin="normal">
-              <InputLabel htmlFor="homeAddress" className={classes.labels}>
-                Home Address
-              </InputLabel>
-              <Input
-                name="homeAddress"
-                type="text"
-                autoComplete="homeAddress"
-                className={classes.inputs}
-                disableUnderline={true}
-                onChange={this.handleChange("homeAddress")}
-              />
-            </FormControl>
-            <FormControl required fullWidth margin="normal">
-              <InputLabel htmlFor="countryCode" className={classes.labels}>
-                Country Code
-              </InputLabel>
-              <Input
-                name="countryCode"
-                type="text"
-                autoComplete="countryCode"
-                className={classes.inputs}
-                disableUnderline={true}
-                onChange={this.handleChange("countryCode")}
-              />
-            </FormControl>
-            <FormControl required fullWidth margin="normal">
-              <InputLabel htmlFor="telephoneNumber" className={classes.labels}>
-               Telephone Number
-              </InputLabel>
-              <Input
-                name="telephoneNumber"
-                type="int"
-                autoComplete="telephoneNumber"
-                className={classes.inputs}
-                disableUnderline={true}
-                onChange={this.handleChange("telephoneNumber")}
-              />
-            </FormControl>
-            <FormControl required fullWidth margin="normal">
-              <InputLabel htmlFor="passportNumber" className={classes.labels}>
-                Passport Number
-              </InputLabel>
-              <Input
-                name="passportNumber"
-                type="text"
-                autoComplete="passportNumber"
-                className={classes.inputs}
-                disableUnderline={true}
-                onChange={this.handleChange("passportNumber")}
-              />
-            </FormControl>
+          
             <FormControl required fullWidth margin="normal">
               <InputLabel htmlFor="email" className={classes.labels}>
                 e-mail
@@ -222,39 +132,6 @@ class Registration extends Component {
               />
             </FormControl>
 
-            <FormControl required fullWidth margin="normal">
-              <InputLabel htmlFor="passwordConfrim" className={classes.labels}>
-                confrim password
-              </InputLabel>
-              <Input
-                name="passwordConfrim"
-                autoComplete="passwordConfrim"
-                className={classes.inputs}
-                disableUnderline={true}
-                onClick={this.state.showPassword}
-                onChange={this.handleChange("passwordConfrim")}
-                type={this.state.hidePassword ? "password" : "input"}
-                endAdornment={
-                  this.state.hidePassword ? (
-                    <InputAdornment position="end">
-                      <VisibilityOffTwoToneIcon
-                        fontSize="default"
-                        className={classes.passwordEye}
-                        onClick={this.showPassword}
-                      />
-                    </InputAdornment>
-                  ) : (
-                    <InputAdornment position="end">
-                      <VisibilityTwoToneIcon
-                        fontSize="default"
-                        className={classes.passwordEye}
-                        onClick={this.showPassword}
-                      />
-                    </InputAdornment>
-                  )
-                }
-              />
-            </FormControl>
             <Button
               disabled={!this.isValid()}
               disableRipple
@@ -262,9 +139,9 @@ class Registration extends Component {
               variant="outlined"
               className={classes.button}
               type="submit"
-              onClick={this.submitRegistration}
+              onClick={this.submitLogin}
             >
-              Sign Up
+             Login
             </Button>
           </form>
 
@@ -303,10 +180,9 @@ class Registration extends Component {
             </Snackbar>
           ) : null}
         </Paper>
-        </div>
       </div>
     );
   }
 }
 
-export default withStyles(register)(Registration);
+export default withStyles(login)(Login);

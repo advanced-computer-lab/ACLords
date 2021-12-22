@@ -11,6 +11,8 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
 const bodyParser = require("body-parser");
+const User = require('../models/Users');
+
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -62,6 +64,7 @@ app.post('/login', (req, res) =>{
         email: email,
         password: password    
     }
+    
     
     const accessToken= generateAccessToken(user)
     const refreshToken= jwt.sign(user, process.env.REFRESH_TOKEN_SECRET)

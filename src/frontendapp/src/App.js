@@ -12,11 +12,11 @@ import ViewReturnFlightDetails from './Component/ViewReturnFlightDetails'
 import MyFlights from './Component/MyFlights'
 import ViewMyFlightDetails from './Component/viewMyFlightDetails'
 import UpdateUser from './Component/UpdateUser'
-import Login from './Component/UpdateUserHelper'
+import Login from './Component/Login'
 import background from "./Component/plane.jpg";
 import CreateUser from './Component/CreateUser';
 import SignUp from './Component/SignUp'
-import Registeration from './Component/Registration'
+import Registration from './Component/Registration'
 import { Link } from 'react-router-dom'
 import UpdateUserHelper from './Component/UpdateUserHelper'
 
@@ -28,14 +28,15 @@ export default function App() {
       <div className="App" style={{
         backgroundImage: `url(${background})`,
         backgroundAttachment: 'fixed',
-       
-        
-        height: '100%' 
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        height: '100vh',
+        overflowY: 'hidden'
       }}>
         <Nav />
         <Switch>
           <Route path="/" component={Home} exact />
-          <Route path="/SignUp" component={Registeration} exact />
+          <Route path="/SignUp" component={Registration} exact />
           <Route path="/CreateFlight" component={CreateFlight} exact />
           <Route path="/ViewFlights" component={ViewFlights} exact />
           <Route path="/Search" component={Search} exact />
@@ -45,7 +46,7 @@ export default function App() {
           <Route path="/ViewDetails/BookFlight" component={BookFlight} exact />
           <Route path="/ViewDetails/BookFlight/ViewReturnFlightDetails" component={ViewReturnFlightDetails} exact />
           <Route path="/UpdateUser" component={UpdateUserHelper} exact />
-          <Route path="/Login" component={UpdateUserHelper} exact />
+          <Route path="/Login" component={Login} exact />
         </Switch>
 
       </div>
