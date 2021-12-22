@@ -66,9 +66,10 @@ class Login extends Component {
       Email: this.state.email,
       Password: this.state.password,
     };
-    LoginHelper(newUserCredentials)
-    window.open("/ViewFlights")
-    
+    const response = LoginHelper(newUserCredentials)
+    console.log(response)
+    console.log("yaraaaaaaaaaaaaaaaaaaaaaaab")
+   
     //dispath to userActions
   };
 
@@ -84,7 +85,7 @@ class Login extends Component {
             className={classes.form}
             onSubmit={() => this.submitLogin}
           >
-          
+          <h2>Please Login</h2>
             <FormControl required fullWidth margin="normal">
               <InputLabel htmlFor="email" className={classes.labels}>
                 e-mail

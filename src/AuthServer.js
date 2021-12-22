@@ -11,7 +11,8 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
 const bodyParser = require("body-parser");
-const User = require('../models/Users');
+const User = require('./models/Users');
+const bcrypt = require('bcrypt')
 
 
 app.use(bodyParser.urlencoded({
@@ -49,23 +50,37 @@ app.delete('/logout', (req, res)=>{
     refreshTokens= refreshTokens.filter(token => token !== req.body.token)
     res.sendStatus(204)
 })
-app.post("/SignUp", userController.addUser)
+// app.post("/SignUp", userController.addUser)
 
 app.post('/SignUp', (req, res) => {
     console.log(req.body);
-    userController.addUser(req.body);
+    userController.addUser(req.body, res);
 }
 )
-app.post('/login', (req, res) =>{
+app.post('/login', async (req, res) =>{
+  
+    User.find({Email: req.body.Email})
+  //   console.log("t7t")
+  // console.log(req.body.Email)
 
-    const email = req.body.email; 
-    const password = req.body.password;
-    const user = {
-        email: email,
-        password: password    
+  // console.log("fo2")
+  .then(async result => {
+    if(result[0] == null){
+      res.send('Email does not exist. Please create new account.')
     }
-    
-    
+    if(await bcrypt.compare(req.body.Password, result[0].Password)){
+      res.send(result[0])
+    }
+    else{
+      res.send('Password is incorrect')
+    }
+  
+  }).catch(err => {
+    console.log(err);
+  });
+   
+   
+
     const accessToken= generateAccessToken(user)
     const refreshToken= jwt.sign(user, process.env.REFRESH_TOKEN_SECRET)
     refreshTokens.push(refreshToken)

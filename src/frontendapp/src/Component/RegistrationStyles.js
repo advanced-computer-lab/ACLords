@@ -27,7 +27,7 @@ export const register = theme => ({
     flexDirection: "column",
     alignItems: "center",
     background:
-      "linear-gradient(180deg, rgba(182,199,110,1) 15%, rgba(242,167,75,1) 90%)",
+      "linear-gradient(180deg, rgba(200,200,200,1) 15%, rgba(242,167,75,1) 90%)",
     boxShadow: ".2px 12px 18px rgba(131,153,167,0.6)",
 
     "&:hover": {

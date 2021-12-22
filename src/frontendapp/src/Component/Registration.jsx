@@ -53,7 +53,7 @@ class Registration extends Component {
   };
 
   isValid = () => {
-    if (this.state.email === "") {
+    if (this.state.email === "" || this.state.password === "" || this.state.passwordConfrim === "") {
       return false;
     }
     return true;
@@ -97,6 +97,7 @@ class Registration extends Component {
             className={classes.form}
             onSubmit={() => this.submitRegistration}
           >
+            <h2 className="login-title">Please enter your info below</h2>
             <FormControl required fullWidth margin="normal">
               <InputLabel htmlFor="firstName" className={classes.labels}>
                 First Name
