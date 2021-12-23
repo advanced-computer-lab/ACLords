@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "devStart": "nodemon app.js",
-    "devStartAuth": "nodemon AuthServer.js",
+    "app": "nodemon app.js",
+    "auth": "nodemon AuthServer.js",
     "start": "node app"
   },
   "dependencies": {
@@ -17,8 +17,10 @@
     "mongoose": "^6.0.12",
     "react": "^18.0.0-beta-0cc724c77-20211125",
     "react-dom": "^18.0.0-beta-0cc724c77-20211125",
+    "react-dropdown": "^1.9.2",
     "react-hot-loader": "^4.13.0",
     "react-scripts": "^4.0.3",
+    "stripe": "^8.195.0",
     "supertest": "^6.1.6",
     "test": "^0.6.0"
   },
