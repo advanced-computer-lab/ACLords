@@ -45,50 +45,44 @@ export default function ViewDetails(data) {
 
             if (window.confirm("Are you sure you want to book this flight?")) {
 
-                console.log(data.location.state.SeatsAvailableOnFlight)
-                data.location.state.SeatsAvailableOnFlight=parseInt(data.location.state.SeatsAvailableOnFlight)-1;
-                data.location.state.Passengers=parseInt(data.location.state.Passengers)+1;
-                console.log(data.location.state.SeatsAvailableOnFlight)
-                data.location.state.SeatsAvailableOnFlight=data.location.state.SeatsAvailableOnFlight.toString();
-                data.location.state.Passengers=data.location.state.Passengers.toString();
-                //console.log("hah")
-                //console.log(data)
+                // console.log(data.location.state.SeatsAvailableOnFlight)
+                // data.location.state.SeatsAvailableOnFlight=parseInt(data.location.state.SeatsAvailableOnFlight)-1;
+                // data.location.state.Passengers=parseInt(data.location.state.Passengers)+1;
+                // console.log(data.location.state.SeatsAvailableOnFlight)
+                // data.location.state.SeatsAvailableOnFlight=data.location.state.SeatsAvailableOnFlight.toString();
+                // data.location.state.Passengers=data.location.state.Passengers.toString();
+                // //console.log("hah")
+                // //console.log(data)
 
-                var newFlight = {
-                    From: data.location.state.From,
-                    To: data.location.state.To,
-                    FlightNumber: data.location.state.FlightNumber,
-                    DepartureDate: data.location.state.DepartureDate,
-                    ArrivalDate: data.location.state.ArrivalDate,
-                    // EconomySeats:numberOfEconomySeats.current.value,
-                    // BusinessClassSeats:numberOfBusinessSeats.current.value,
-                    Airport: data.location.state.Airport,
-                    Cabin: data.location.state.Cabin,
-                    SeatsAvailableOnFlight: data.location.state.SeatsAvailableOnFlight,
-                    Passengers: data.location.state.Passengers,
-                    Duration: data.location.state.Duration,
-                    BaggageAllowance: data.location.state.BaggageAllowance,
-                    Price: data.location.state.Price
+                // var newFlight = {
+                //     From: data.location.state.From,
+                //     To: data.location.state.To,
+                //     FlightNumber: data.location.state.FlightNumber,
+                //     DepartureDate: data.location.state.DepartureDate,
+                //     ArrivalDate: data.location.state.ArrivalDate,
+                //     // EconomySeats:numberOfEconomySeats.current.value,
+                //     // BusinessClassSeats:numberOfBusinessSeats.current.value,
+                //     Airport: data.location.state.Airport,
+                //     Cabin: data.location.state.Cabin,
+                //     SeatsAvailableOnFlight: data.location.state.SeatsAvailableOnFlight,
+                //     Passengers: data.location.state.Passengers,
+                //     Duration: data.location.state.Duration,
+                //     BaggageAllowance: data.location.state.BaggageAllowance,
+                //     Price: data.location.state.Price
               
-                  };
+                //   };
 
 
-                axios.put("http://localhost:8000/UpdateFlights/" + data.location.state._id, newFlight)
-                .then((res) => {
-                console.log("success");})
-                .catch((err) => {
-                console.log("Error!");
-                });
+                // axios.put("http://localhost:8000/UpdateFlights/" + data.location.state._id, newFlight)
+                // .then((res) => {
+                // console.log("success");})
+                // .catch((err) => {
+                // console.log("Error!");
+                // });
 
-                console.log("geit?")
-                CompleteBooking(newFlight);
-                emailjs.send(serviceID,templateID,{to_name:"Danial",id:data.location.state._id,send_to:"danial.amir97@gmail.com"},userID)
-
-                history.push({
-                    pathname:"/ViewDetails/BookFlight", state: data.location.state
-                });
+                // console.log("geit?")
                 var price1 = parseInt(data.location.state.Price) / 100
-                {
+                
                 fetch("http://localhost:4000/create-checkout-session", {
                     method: "POST",
                     headers: {
@@ -111,7 +105,15 @@ export default function ViewDetails(data) {
                     .catch(e => {
                         console.error(e.error)
                     })
-                }
+                    
+                CompleteBooking(data.location.state);
+                emailjs.send(serviceID,templateID,{to_name:"Danial",id:data.location.state._id,send_to:"danial.amir97@gmail.com"},userID)
+
+                history.push({
+                    pathname:"/ViewDetails/BookFlight", state: data.location.state
+                });
+                
+                
             }
          }
         else{

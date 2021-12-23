@@ -66,9 +66,7 @@ class Login extends Component {
       Email: this.state.email,
       Password: this.state.password,
     };
-    const response = LoginHelper(newUserCredentials)
-    console.log(response)
-    console.log("yaraaaaaaaaaaaaaaaaaaaaaaab")
+    LoginHelper(newUserCredentials)
    
     //dispath to userActions
   };

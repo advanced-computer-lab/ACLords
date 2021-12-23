@@ -37,7 +37,7 @@ app.get("/edit", (req, res) => {
 })
 
 app.get("/", (req, res) => {
-  res.send("Hi")
+ 
   //res.render('Home')
 })
 app.post("/CreateFlight", flightController.addFlight)

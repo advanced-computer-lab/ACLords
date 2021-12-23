@@ -47,8 +47,6 @@ export default function UpdateUser({User}) {
       });
 
   }
-console.log(User.FirstName)
-
 
   return (
     <div className='form-group'>

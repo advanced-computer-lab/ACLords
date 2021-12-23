@@ -1,11 +1,14 @@
 import axios from 'axios';
 import BookFlight from './BookFlight';
+import jwt from 'jwt-decode'
 
 export default function CompleteBooking(data) {
 
-    console.log(data)
+    const accessToken =localStorage.getItem("accessToken")
+
+    var UserId = jwt(accessToken)._id
     var body = {
-        userId: '61a6391f7053ae7baba4fb03',
+        userId: UserId,
         flightId: data._id,
         From: data.From,
         To: data.To,

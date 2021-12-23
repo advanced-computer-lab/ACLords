@@ -47,6 +47,9 @@ exports.viewUsers = (req, res) => {
 };
 
 exports.getUser = (req, res) => {
+ console.log("t7t")
+  console.log(req.body)
+ console.log("foo2")
   User.findById(req.params.id)
     .then(result => {
       res.send(result);

@@ -13,6 +13,8 @@ app.use(express.json())
 const bodyParser = require("body-parser");
 const User = require('./models/Users');
 const bcrypt = require('bcrypt')
+const cookieParser = require('cookie-parser')
+app.use(cookieParser())
 
 //D
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
@@ -20,6 +22,16 @@ const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 const storeItems = new Map([
   [1, { priceInCents: 10000, name: "Flight Payment" }],
 ])
+
+
+// app.get('/set-cookies', (req,res)=> {
+//   res.cookie('accessToken', )
+// })
+
+// app.get('/read-cookies', (req,res)=> {
+
+// })
+
 
 app.post("/create-checkout-session", async (req, res) => {
   try {
@@ -93,7 +105,7 @@ app.post('/SignUp', (req, res) => {
 
 
 
-app.post('/login', async (req, res) => {
+app.post('/Login', async (req, res) => {
 
   User.find({ Email: req.body.Email })
     
@@ -103,17 +115,25 @@ app.post('/login', async (req, res) => {
       }
       if (await bcrypt.compare(req.body.Password, result[0].Password)) {
         const user = {
-          Email: req.body.Email,
-          Password: req.body.Password
+          _id : result[0]._id,
+          Email: result[0].Email,
+          Password: result[0].Password
         }
         const accessToken = generateAccessToken(user)
         const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET)
         refreshTokens.push(refreshToken)
         const tokens= {
+          result: result[0],
           accessToken: accessToken,
           refreshToken: refreshToken
         }
-        res.json(tokens) 
+        // res.cookie('accessToken', accessToken)
+        // res.cookie('refreshToken', refreshToken)
+        console.log(user.body)
+        console.log("foo2")
+        res.send(tokens)
+        // res.status(200).json({Email: req.body.Email})
+        
           
       }
 

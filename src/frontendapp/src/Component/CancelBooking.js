@@ -2,12 +2,14 @@ import axios from 'axios';
 import BookFlight from './BookFlight';
 import GetBookedFlights from './GetBookedFlights';
 import MyFlights from './MyFlights';
+import jwt from 'jwt-decode'
 
 export default function CancelBooking(data) {
-console.log(data);
-console.log("bos foo2")
+    const accessToken =localStorage.getItem("accessToken")
+
+    var UserId = jwt(accessToken)._id
     var body = {
-        userId: '61a6391f7053ae7baba4fb03',
+        userId: UserId,
         flightId: data._id,
         From: data.From,
         To: data.To,

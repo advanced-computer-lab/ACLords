@@ -5,11 +5,14 @@ import MyFlight from './MyFlight';
 import { v4 as uuidv4 } from 'uuid';
 import Reservation from './Reservation';
 import MyFlights from './MyFlights'
+import jwt from 'jwt-decode'
 
 export default function GetBookedFlights(data) {
-   
+    const accessToken =localStorage.getItem("accessToken")
+
+    var UserId = jwt(accessToken)._id
     var body = {
-        userId: '61a6391f7053ae7baba4fb03'
+        userId: UserId
     }
     const [reservations,setReservations] = useState([]);    
     

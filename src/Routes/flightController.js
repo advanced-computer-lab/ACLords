@@ -56,6 +56,7 @@ exports.completeReturnBooking = (req, res) => {
 };
 
 exports.viewFlights = (req, res) => {
+    
   Flight.find({
   })
     .then(result => {
