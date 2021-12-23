@@ -66,6 +66,7 @@ class Registration extends Component {
         error: "Passwords don't match"
       });
     }
+    else{
     const newUserCredentials = {
       FirstName: this.state.firstName,
       LastName: this.state.lastName,
@@ -80,7 +81,7 @@ class Registration extends Component {
    
     SignUp(newUserCredentials)
     
-    
+  }
     //dispath to userActions
   };
 

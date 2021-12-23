@@ -83,7 +83,7 @@ app.delete('/logout', (req, res) => {
   refreshTokens = refreshTokens.filter(token => token !== req.body.token)
   res.sendStatus(204)
 })
-// app.post("/SignUp", userController.addUser)
+// app.post("/SignUp", userController.addUser) 
 
 app.post('/SignUp', (req, res) => {
   console.log(req.body);
@@ -109,12 +109,14 @@ app.post('/login', async (req, res) => {
         const accessToken = generateAccessToken(user)
         const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET)
         refreshTokens.push(refreshToken)
-        res.json(
-          {
-            accessToken: accessToken,
-            refreshToken: refreshToken
-          }) 
+        const tokens= {
+          accessToken: accessToken,
+          refreshToken: refreshToken
+        }
+        res.json(tokens) 
+          
       }
+
       else {
         res.send('Password is incorrect')
       }

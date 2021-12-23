@@ -7,7 +7,7 @@ export default function SignUp(body){
             window.alert("This email is already registered! Please try to Login or register with a new email.")
         }
         else{
-        window.open("/Login")
+        window.location.replace("/Login")
         window.alert("User Created successfully, please login to continue")
     }
     }).catch()

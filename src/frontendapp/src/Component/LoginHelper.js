@@ -4,6 +4,9 @@ export default function LoginHelper(body) {
 
     axios.post("http://localhost:4000/Login", body).then(res => {
         console.log(res.data);
+        const accessToken = res.data.accessToken;
+        const refreshToken = res.data.refreshToken;
+        
         if (res.data == "Password is incorrect") {
             window.alert("Password is incorrect")
         }
@@ -12,7 +15,9 @@ export default function LoginHelper(body) {
                 window.alert("Email does not exist. Please create new account.")
             }
             else {
-                window.open("/ViewFlights")
+                localStorage.setItem("accessToken", accessToken);
+                localStorage.setItem("refreshToken", refreshToken);
+                window.location.replace("/ViewFlights")
             }
         }
     }).catch()
