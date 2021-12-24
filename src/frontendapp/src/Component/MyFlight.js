@@ -24,6 +24,7 @@ export default function MyFlight({ data }) {
     console.log("ggggggg")
     const history = useHistory();
 
+
     function handleClick() {
         if (window.confirm("Are you sure you want to cancel this booking?")) {
             // data.location.state.SeatsAvailableOnFlight=parseInt(data.location.state.SeatsAvailableOnFlight)+1;
@@ -49,12 +50,13 @@ export default function MyFlight({ data }) {
             //   };
 
 
-            axios.put("http://localhost:8000/UpdateFlights/" + data.location.state._id, data.location.state)
-            .then((res) => {
-            console.log("success");})
-            .catch((err) => {
-            console.log("Error!");
-            });
+            // axios.put("http://localhost:8000/UpdateFlights/" + data.location.state._id, data.location.state)
+            // .then((res) => {
+            // console.log("success");})
+            // .catch((err) => {
+            // console.log("Error!");
+            // });
+            
             emailjs.send(serviceID,templateID,{to_name:"Danial",id:data.location.state._id,send_to:"danial.amir97@gmail.com"},userID)
             CancelBooking(data._id);
             history.push("/MyFlights")

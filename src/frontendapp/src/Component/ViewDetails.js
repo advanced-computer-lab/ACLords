@@ -81,6 +81,8 @@ export default function ViewDetails(data) {
                 // });
 
                 // console.log("geit?")
+
+
                 var price1 = parseInt(data.location.state.Price) / 100
                 
                 fetch("http://localhost:4000/create-checkout-session", {
@@ -106,12 +108,12 @@ export default function ViewDetails(data) {
                         console.error(e.error)
                     })
                     
-                CompleteBooking(data.location.state);
-                emailjs.send(serviceID,templateID,{to_name:"Danial",id:data.location.state._id,send_to:"danial.amir97@gmail.com"},userID)
-
-                history.push({
-                    pathname:"/ViewDetails/BookFlight", state: data.location.state
-                });
+                    CompleteBooking(data.location.state);
+                    emailjs.send(serviceID,templateID,{to_name:"Danial",id:data.location.state._id,send_to:"danial.amir97@gmail.com"},userID)
+    
+                // history.push({
+                //     pathname:"/ViewDetails/BookFlight", state: data.location.state
+                // });
                 
                 
             }

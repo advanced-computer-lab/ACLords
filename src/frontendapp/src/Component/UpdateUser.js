@@ -11,7 +11,9 @@ export default function UpdateUser({User}) {
   const lastName = useRef();
   const passportNumber = useRef();
   const email = useRef();
-
+  function passClick(){
+    window.location = 'http://localhost:3000/ChangePass'
+  }
 
 
   function updateClick() {
@@ -61,6 +63,9 @@ export default function UpdateUser({User}) {
 
 
       <button onClick={updateClick}>Update Profile</button>
+      <button onClick={passClick}>Change Password</button>
+      
+
 
     </div>
 
