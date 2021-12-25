@@ -6,28 +6,47 @@ import { v4 as uuidv4 } from 'uuid';
 import Reservation from './Reservation';
 import MyFlights from './MyFlights'
 import jwt from 'jwt-decode'
+import emailjs from 'emailjs-com'
+import { init } from 'emailjs-com'
+const serviceID = 'service_v0sodfb';
+const templateID = 'template_cvxmx8m';
+const userID = 'user_Nl7YFcYSW6N1aedtILZHr';
+
 
 export default function GetBookedFlights(data) {
-    const accessToken =localStorage.getItem("accessToken")
+    const accessToken = localStorage.getItem("accessToken")
 
     var UserId = jwt(accessToken)._id
     var body = {
         userId: UserId
     }
-    const [reservations,setReservations] = useState([]);    
-    
-    useEffect(()=>{                     
-        axios.post(`http://localhost:8000/GetBookedFlights`, body).then(res=>{
-        setReservations(res.data);
+    function handleSummary() {
+        var UserId = jwt(accessToken)._id
+        var name = jwt(accessToken).FirstName
+        var email = jwt(accessToken).Email
+        emailjs.send(serviceID, templateID, { to_name: name, id: UserId, send_to: JSON.stringify(email) }, userID)
+    }
+    const [reservations, setReservations] = useState([]);
+
+    useEffect(() => {
+        axios.post(`http://localhost:8000/GetBookedFlights`, body).then(res => {
+            setReservations(res.data);
         })
-    },[]);
+    }, []);
     console.log(reservations);
-    return(
-<div className="flights-list">
-        {reservations.map((r, index)=>{
-            
-            return <Reservation key={uuidv4()} data={r} />
-            
-            })}
-        </div>   )
+    return (
+        <div>
+            <div className="flights-list">
+                <button type="button" onClick={handleSummary} variant="outlined">
+                    Email me summary
+                </button>
+                {reservations.map((r, index) => {
+
+                    return <Reservation key={uuidv4()} data={r} />
+
+                })}
+            </div>
+        </div>
+
+    )
 }

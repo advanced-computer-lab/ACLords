@@ -30,7 +30,7 @@ import UpdateUserHelper from './Component/UpdateUserHelper'
 // SERVER_URL=http://localhost:4000
 // STRIPE_PRIVATE_KEY=sk_test_51K9d05FrFi3SlqpWJFffcyHQi6nIox2ZwXl0Uzoi1VRu2JKjTjPECC7Or2IWomrsZi4vlr5KBSWjJuNm6Y68vzZZ00GEyQLo75
 
-export default function App() {
+export default function GuestApp() {
   return (
 //hi
     <Router>
