@@ -21,11 +21,10 @@ const templateID = 'template_5pw7nun';
 const userID = 'user_cS7Y0uXoWVDpEmlzxTkDa';
 
 export default function ViewDetails(data) {
+    console.log(data.location.state)
     const accessToken = localStorage.getItem("accessToken")
 
     var email = jwt(accessToken).Email
-    console.log(email)
-    console.log(data.location.state._id)
     const [flights, setFlights] = useState([]);
     const history = useHistory();
     //const id = data._id;
@@ -112,7 +111,7 @@ export default function ViewDetails(data) {
                     .catch(e => {
                         console.error(e.error)
                     })
-                    
+                    console.log(data.location.state)
                     CompleteBooking(data.location.state);
 
                     var UserId = jwt(accessToken)._id

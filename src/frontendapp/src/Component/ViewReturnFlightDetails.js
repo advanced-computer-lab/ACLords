@@ -7,9 +7,25 @@ import { Typography, Button } from '@material-ui/core';
 //import BookFlight from './BookFlight';
 import { useHistory } from 'react-router-dom';
 import './App.css';
-import CompleteReturnBooking from './CompleteReturnBooking';
+import CompleteBooking from './CompleteBooking';
+import UpdateFlights from './UpdateFlights';
+import emailjs from 'emailjs-com'
+import {init} from 'emailjs-com'
+import flight from './Flight'
+import jwt from 'jwt-decode'
+import CompleteReturnBooking from './CompleteReturnBooking'
+
+init("user_cS7Y0uXoWVDpEmlzxTkDa");
+
+const serviceID = 'default_service';
+const templateID = 'template_5pw7nun';
+const userID = 'user_cS7Y0uXoWVDpEmlzxTkDa';
 
 export default function ViewReturnFlightDetails(data) {
+    console.log(data.location.state)
+    const accessToken = localStorage.getItem("accessToken")
+
+    var email = jwt(accessToken).Email
     const [flights, setFlights] = useState([]);
     const history = useHistory();
     //const id = data._id;
@@ -17,7 +33,7 @@ export default function ViewReturnFlightDetails(data) {
     //  console.log(data);
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/ViewDetails/BookFlight/ViewReturnflightDetails/${data.location.state._id}`).then(res => {
+        axios.get(`http://localhost:8000/ViewDetails/${data.location.state._id}`).then(res => {
             // console.log(res.data)
             setFlights(res.data);
         })
@@ -26,12 +42,92 @@ export default function ViewReturnFlightDetails(data) {
 
 
     function handleClick() {
-        if (window.confirm("Are you sure you want to book this flight?")) {
-            CompleteReturnBooking(data);
-            console.log("hanewsal");
-            history.push({
-                pathname:"/MyFlights", state: data.location.state
-            });
+        
+// D
+        //console.log(parseInt(data.location.state.Price))
+        
+        if(data.location.state.SeatsAvailableOnFlight>0){
+
+            if (window.confirm("Are you sure you want to book this flight?")) {
+
+                // console.log(data.location.state.SeatsAvailableOnFlight)
+                // data.location.state.SeatsAvailableOnFlight=parseInt(data.location.state.SeatsAvailableOnFlight)-1;
+                // data.location.state.Passengers=parseInt(data.location.state.Passengers)+1;
+                // console.log(data.location.state.SeatsAvailableOnFlight)
+                // data.location.state.SeatsAvailableOnFlight=data.location.state.SeatsAvailableOnFlight.toString();
+                // data.location.state.Passengers=data.location.state.Passengers.toString();
+                // //console.log("hah")
+                // //console.log(data)
+
+                // var newFlight = {
+                //     From: data.location.state.From,
+                //     To: data.location.state.To,
+                //     FlightNumber: data.location.state.FlightNumber,
+                //     DepartureDate: data.location.state.DepartureDate,
+                //     ArrivalDate: data.location.state.ArrivalDate,
+                //     // EconomySeats:numberOfEconomySeats.current.value,
+                //     // BusinessClassSeats:numberOfBusinessSeats.current.value,
+                //     Airport: data.location.state.Airport,
+                //     Cabin: data.location.state.Cabin,
+                //     SeatsAvailableOnFlight: data.location.state.SeatsAvailableOnFlight,
+                //     Passengers: data.location.state.Passengers,
+                //     Duration: data.location.state.Duration,
+                //     BaggageAllowance: data.location.state.BaggageAllowance,
+                //     Price: data.location.state.Price
+              
+                //   };
+
+
+                // axios.put("http://localhost:8000/UpdateFlights/" + data.location.state._id, newFlight)
+                // .then((res) => {
+                // console.log("success");})
+                // .catch((err) => {
+                // console.log("Error!");
+                // });
+
+                // console.log("geit?")
+
+
+                var price1 = parseInt(data.location.state.Price) / 100
+                
+                fetch("http://localhost:4000/create-checkout-session2", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        items: [
+                            { id: 1, quantity: price1 },
+                        ],
+                    }),
+                })
+                    .then(res => {
+                        if (res.ok) return res.json()
+                        return res.json().then(json => Promise.reject(json))
+                    })
+                    .then(({ url }) => {
+                        //console.log(url)
+                         window.location = url
+                    })
+                    .catch(e => {
+                        console.error(e.error)
+                    })
+                    console.log(data.location.state)
+                    CompleteReturnBooking(data.location.state);
+
+                    var UserId = jwt(accessToken)._id
+                    var name = jwt(accessToken).FirstName
+                   
+                    emailjs.send(serviceID,templateID,{to_name: name, id:UserId, send_to:JSON.stringify(email)},userID)    
+                // history.push({
+                //     pathname:"/ViewDetails/BookFlight", state: data.location.state
+                // });
+                
+                
+            }
+         }
+        else{
+            window.prompt("Sorry, this flight is complete")
         }
     }
 
@@ -61,7 +157,7 @@ export default function ViewReturnFlightDetails(data) {
                 <br />
 
 
-                <button className="BookReturnFlight" type="button" onClick={handleClick} variant="outlined">Book Return Flight</button>
+                <button className="BookFlight" type="button" onClick={handleClick} variant="outlined">Book Flight</button>
             </Typography>
         </div>
     )

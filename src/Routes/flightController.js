@@ -17,11 +17,11 @@ exports.addFlight = (req, res) => {
 // getting all the flights
 
 exports.completeBooking = (req, res) => {
-
   const reservation = new Reservation(req.body)
   
   reservation.save()
     .then(result => {
+      console.log(result)
       res.send(result);
       console.log("added");
     })
@@ -56,7 +56,7 @@ exports.completeReturnBooking = (req, res) => {
 };
 
 exports.viewFlights = (req, res) => {
-    
+
   Flight.find({
   })
     .then(result => {

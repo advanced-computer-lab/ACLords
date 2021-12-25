@@ -105,7 +105,6 @@ export default function ViewDetails(data) {
                         console.error(e.error)
                     })
                     
-                    CompleteBooking(data.location.state);
 
                   // history.push({
                 //     pathname:"/ViewDetails/BookFlight", state: data.location.state

@@ -19,6 +19,7 @@ import Registration from './Component/Registration'
 import { Link } from 'react-router-dom'
 import UpdateUserHelper from './Component/UpdateUserHelper'
 import Logout from './Component/Logout'
+import CompleteBooking from './Component/CompleteBooking'
 
 
 //.env
@@ -51,10 +52,10 @@ export default function SignedApp() {
           <Route path="/ViewFlights" component={ViewFlights} exact />
           <Route path="/Search" component={Search} exact />
           <Route path="/MyFlights" component={GetBookedFlights} exact />
-          {/* <Route path="/MyFlights/ViewMyFlightDetails" component={ViewMyFlightDetails} exact /> */}
+          <Route path="/MyFlights/ViewMyFlightDetails" component={ViewMyFlightDetails} exact />
           <Route path="/ViewDetails" component={ViewDetails} exact />
-          {/* <Route path="/ViewDetails/BookFlight" component={BookFlight} exact /> */}
-          {/* <Route path="/ViewDetails/BookFlight/ViewReturnFlightDetails" component={ViewReturnFlightDetails} exact /> */}
+          <Route path="/ViewDetails/BookFlight" component={BookFlight} exact />
+          <Route path="/ViewDetails/BookFlight/ViewReturnFlightDetails" component={ViewReturnFlightDetails} exact />
           <Route path="/MyProfile" component={UpdateUserHelper} exact />
           <Route path="/Login" component={Login} exact />
           <Route path="/logout" component={Logout} exact />
