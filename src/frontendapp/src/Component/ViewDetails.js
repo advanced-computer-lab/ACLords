@@ -136,7 +136,7 @@ export default function ViewDetails(data) {
             <Typography
                 variant="h6"
                 align="left"
-                color="primary"
+                //color="primary"
             >
                 Departure Terminal :  {flights.From} <br />
                 Arrival Terminal :  {flights.To} <br />
