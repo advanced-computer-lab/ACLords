@@ -20,6 +20,16 @@ import Registration from './Component/Registration'
 import { Link } from 'react-router-dom'
 import UpdateUserHelper from './Component/UpdateUserHelper'
 
+
+//.env
+// ACCESS_TOKEN_SECRET= 11047641652c2801a2f9ce484fee6b6512abf5f972a9767661d6b5ffb9ebc2b5793de1acec650a9b0075c5a62489e35621952a3e5c87db3c124c0f84e1e10070,
+// REFRESH_TOKEN_SECRET= 5cf8f23b0b5797f6e8fa27903d288d90b4306a3281b2838aac00d3bea5651c89c9ace3c2e0ab0378e4d42c9f28db283fdc1d32304d9091bfee8096f5e88426bd
+
+// SKIP_PREFLIGHT_CHECK=true
+
+// SERVER_URL=http://localhost:4000
+// STRIPE_PRIVATE_KEY=sk_test_51K9d05FrFi3SlqpWJFffcyHQi6nIox2ZwXl0Uzoi1VRu2JKjTjPECC7Or2IWomrsZi4vlr5KBSWjJuNm6Y68vzZZ00GEyQLo75
+
 export default function App() {
   return (
 //hi
