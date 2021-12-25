@@ -93,6 +93,7 @@ app.post('/token', (req, res) => {
 
 app.delete('/logout', (req, res) => {
   refreshTokens = refreshTokens.filter(token => token !== req.body.token)
+  
   res.sendStatus(204)
 })
 // app.post("/SignUp", userController.addUser) 
@@ -108,21 +109,26 @@ app.post('/SignUp', (req, res) => {
 app.post('/Login', async (req, res) => {
 
   User.find({ Email: req.body.Email })
-    
+
     .then(async result => {
       if (result[0] == null) {
         res.send('Email does not exist. Please create new account.')
       }
       if (await bcrypt.compare(req.body.Password, result[0].Password)) {
         const user = {
-          _id : result[0]._id,
+          _id: result[0]._id,
           Email: result[0].Email,
-          Password: result[0].Password
+          Password: result[0].Password,
+          FirstName: result[0].FirstName,
+          LastName: result[0].LastName,
+          CountryCode: result[0].CountryCode,
+          TelephoneNumber: result[0].TelephoneNumber,
+          PassportNumber: result[0].PassportNumber
         }
         const accessToken = generateAccessToken(user)
         const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET)
         refreshTokens.push(refreshToken)
-        const tokens= {
+        const tokens = {
           result: result[0],
           accessToken: accessToken,
           refreshToken: refreshToken
@@ -133,8 +139,8 @@ app.post('/Login', async (req, res) => {
         console.log("foo2")
         res.send(tokens)
         // res.status(200).json({Email: req.body.Email})
-        
-          
+
+
       }
 
       else {

@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import {Link} from 'react-router-dom';
 
-function Nav(){
+function AdminNav(){
     const navStyle ={
        
         color:'Black'
@@ -18,8 +18,11 @@ function Nav(){
           {/* <h3>
               ACLords
           </h3> */}
+
+          {/* EditFlight */}
+          {/*delete*/}
           <ul className="nav-links">
-              <Link style={navStyle} to='/ViewFlights' className='nav-button'>
+              <Link style={navStyle} to='/' className='nav-button'>
               <li>View Flights</li>
               </Link>
               <Link style={navStyle} to='/CreateFlight' className='nav-button'>
@@ -28,12 +31,11 @@ function Nav(){
               <Link style={navStyle} to='/Search' className='nav-button'>
               <li>Search Flights</li>
               </Link>
-              <Link style={navStyle} to='/MyFlights' className='nav-button'>
-              <li>My Flights</li>
+              <Link style={navStyle} to='/logout' className='nav-button'>
+              <li>Logout</li>
               </Link>
-              <Link style={navStyle} to='/UpdateUser' className='nav-button'>
-              <li>My Profile</li>
-              </Link>
+              
+              
 
           </ul>
         </nav>
@@ -41,4 +43,4 @@ function Nav(){
 }
 
 
-export default Nav;
+export default AdminNav;

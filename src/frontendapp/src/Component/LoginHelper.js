@@ -1,5 +1,7 @@
 import axios from 'axios';
+import jwtDecode from 'jwt-decode';
 import Login from './Login';
+import jwt from 'jwt-decode'
 const cookieParser = require('cookie-parser')
 
 
@@ -20,8 +22,13 @@ export default function LoginHelper(body) {
             else {
                 localStorage.setItem("accessToken", accessToken)
                 localStorage.setItem("refreshToken", refreshToken)
-               // window.location.replace("/ViewFlights")
-            }
+                
+                if(jwt(accessToken).Email === "Admin"){
+                    window.location.replace("/")
+                }
+                else{
+                window.location.replace("/ViewFlights")
+            }}
         }
     }).catch()
 }

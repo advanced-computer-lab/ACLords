@@ -1,11 +1,10 @@
 import React from 'react'
 import CreateFlight from './Component/CreateFlight'
 import Search from './Component/Search'
-//import UpdateFlights from './Component/UpdateFlights'
 import ViewFlights from './Component/ViewFlights'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
-import Nav from './Component/Nav';
-import ViewDetails from './Component/ViewDetails'
+import GuestNav from './Component/GuestNav.js';
+// import ViewDetails from './Component/ViewDetails'
 import GetBookedFlights from './Component/GetBookedFlights'
 import BookFlight from './Component/BookFlight'
 import ViewReturnFlightDetails from './Component/ViewReturnFlightDetails'
@@ -19,6 +18,7 @@ import SignUp from './Component/SignUp'
 import Registration from './Component/Registration'
 import { Link } from 'react-router-dom'
 import UpdateUserHelper from './Component/UpdateUserHelper'
+import ViewDetails from './Component/ViewDetailsGuest'
 
 
 //.env
@@ -43,19 +43,19 @@ export default function GuestApp() {
         height: '100vh',
         overflowY: 'hidden'
       }}>
-        <Nav />
+        <GuestNav />
         <Switch>
           <Route path="/" component={Home} exact />
           <Route path="/SignUp" component={Registration} exact />
-          <Route path="/CreateFlight" component={CreateFlight} exact />
+          {/* <Route path="/CreateFlight" component={CreateFlight} exact /> */}
           <Route path="/ViewFlights" component={ViewFlights} exact />
           <Route path="/Search" component={Search} exact />
-          <Route path="/MyFlights" component={GetBookedFlights} exact />
-          <Route path="/MyFlights/ViewMyFlightDetails" component={ViewMyFlightDetails} exact />
+          {/* <Route path="/MyFlights" component={GetBookedFlights} exact /> */}
+          {/* <Route path="/MyFlights/ViewMyFlightDetails" component={ViewMyFlightDetails} exact /> */}
           <Route path="/ViewDetails" component={ViewDetails} exact />
-          <Route path="/ViewDetails/BookFlight" component={BookFlight} exact />
-          <Route path="/ViewDetails/BookFlight/ViewReturnFlightDetails" component={ViewReturnFlightDetails} exact />
-          <Route path="/UpdateUser" component={UpdateUserHelper} exact />
+          {/* <Route path="/ViewDetails/BookFlight" component={BookFlight} exact /> */}
+          {/* <Route path="/ViewDetails/BookFlight/ViewReturnFlightDetails" component={ViewReturnFlightDetails} exact /> */}
+          {/* <Route path="/UpdateUser" component={UpdateUserHelper} exact /> */}
           <Route path="/Login" component={Login} exact />
         </Switch>
 
@@ -85,7 +85,7 @@ export default function GuestApp() {
 
 const Home = () => (
   <div>
-    <h1 >Welcome To ACLords Official Website</h1>
+    <h1 >Welcome To Guest Official Website</h1>
     <Link to="/ViewFlights">
       <button type="button">
         Continue as a Guest User
