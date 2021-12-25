@@ -33,20 +33,20 @@ export default function MyFlights(reservations) {
     console.log(flights)
     console.log("de el flights")
     return (
-      <div className='myFlights'>
-           <div className='summary-button'>
-             <button type="button" onClick={handleSummary} variant="outlined">
-                Email me summary
-            </button>
-        </div>
-      <div className="flights-list">
-            {flights.map((f, index) => {
+        <div className='myFlights'>
+            <div className='summary-button'>
+                <button type="button" onClick={handleSummary} variant="outlined">
+                    Email me summary
+                </button>
+            </div>
+            <div className="flights-list">
+                {flights.map((f, index) => {
 
-                return <Reservation key={uuidv4()} data={f} />
+                    return <Reservation key={uuidv4()} data={f} />
 
-            })}
-        </div>
-       
+                })}
+            </div>
+
         </div>
 
     )

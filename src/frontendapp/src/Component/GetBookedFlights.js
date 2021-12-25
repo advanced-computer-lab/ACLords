@@ -21,10 +21,23 @@ export default function GetBookedFlights(data) {
         userId: UserId
     }
     function handleSummary() {
+        var flightStr="";
+        if(reservations.length==0){
+            flightStr="Sorry, it seems like that you don't have any reserved flights"
+        }else{
+           // flightStr = reservations;
+            for (var j = 0; j < reservations.length; j++) {
+
+                flightStr+="Flight:"+ (j+1)+", ";
+                flightStr=flightStr + " From:"+ reservations[j].From +", To:"+ reservations[j].To+", Flight Number:"+reservations[j].FlightNumber
+                flightStr=flightStr +" ----------------------------------------------------- "
+            }
+
+        }
         var UserId = jwt(accessToken)._id
         var name = jwt(accessToken).FirstName
         var email = jwt(accessToken).Email
-        emailjs.send(serviceID, templateID, { to_name: name, id: UserId, send_to: JSON.stringify(email) }, userID)
+        emailjs.send(serviceID, templateID, { to_name: JSON.stringify(name), listid: JSON.stringify(flightStr), send_to: JSON.stringify(email) }, userID)
     }
     const [reservations, setReservations] = useState([]);
 
@@ -35,7 +48,6 @@ export default function GetBookedFlights(data) {
     }, []);
     console.log(reservations);
     return (
-        <div>
             <div className="flights-list">
                 <button type="button" onClick={handleSummary} variant="outlined">
                     Email me summary
@@ -46,7 +58,6 @@ export default function GetBookedFlights(data) {
 
                 })}
             </div>
-        </div>
 
     )
 }

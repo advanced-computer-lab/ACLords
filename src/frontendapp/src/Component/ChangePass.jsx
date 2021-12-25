@@ -18,15 +18,8 @@ import CloseIcon from "@material-ui/icons/Close";
 import SignUp from "./SignUp";
 import LoginHelper from "./LoginHelper";
 import { useHistory } from 'react-router-dom';
-import emailjs from 'emailjs-com'
-import { init } from 'emailjs-com'
-import jwt from 'jwt-decode'
 
-
-const accessToken = localStorage.getItem("accessToken");
-
-
-class Login extends Component {
+class ChangePass extends Component {
   state = {
     firstName: "",
     lastName: "",
@@ -78,18 +71,6 @@ class Login extends Component {
     //dispath to userActions
   };
 
-  forgotpass = e => {
-    e.preventDefault();
-
-
-    var UserId = jwt(accessToken)._id
-    var name = jwt(accessToken).FirstName
-    var email = jwt(accessToken).Email
-
-    emailjs.send("service_v0sodfb","template_u9smrqo",{to_name: name, pass: "hdsgdah", send_to: JSON.stringify(email),});
-    //dispath to userActions
-  };
-
   render() {
     const { classes } = this.props;
     return (
@@ -102,32 +83,85 @@ class Login extends Component {
             className={classes.form}
             onSubmit={() => this.submitLogin}
           >
-          <h2>Please Login</h2>
+
+
             <FormControl required fullWidth margin="normal">
-              <InputLabel htmlFor="email" className={classes.labels}>
-                e-mail
+              <InputLabel htmlFor="oldpassword" className={classes.labels}>
+               old password
               </InputLabel>
               <Input
-                name="email"
-                type="email"
-                autoComplete="email"
+                name="oldpassword"
+                autoComplete="oldpassword"
                 className={classes.inputs}
                 disableUnderline={true}
-                onChange={this.handleChange("email")}
+                onChange={this.handleChange("oldpassword")}
+                type={this.state.hidePassword ? "oldpassword" : "input"}
+                endAdornment={
+                  this.state.hidePassword ? (
+                    <InputAdornment position="end">
+                      <VisibilityOffTwoToneIcon
+                        fontSize="default"
+                        className={classes.passwordEye}
+                        onClick={this.showPassword}
+                      />
+                    </InputAdornment>
+                  ) : (
+                    <InputAdornment position="end">
+                      <VisibilityTwoToneIcon
+                        fontSize="default"
+                        className={classes.passwordEye}
+                        onClick={this.showPassword}
+                      />
+                    </InputAdornment>
+                  )
+                }
               />
             </FormControl>
 
             <FormControl required fullWidth margin="normal">
-              <InputLabel htmlFor="password" className={classes.labels}>
-                password
+              <InputLabel htmlFor="newpassword" className={classes.labels}>
+               new password
               </InputLabel>
               <Input
-                name="password"
-                autoComplete="password"
+                name="newpassword"
+                autoComplete="newpassword"
                 className={classes.inputs}
                 disableUnderline={true}
-                onChange={this.handleChange("password")}
-                type={this.state.hidePassword ? "password" : "input"}
+                onChange={this.handleChange("newpassword")}
+                type={this.state.hidePassword ? "newpassword" : "input"}
+                endAdornment={
+                  this.state.hidePassword ? (
+                    <InputAdornment position="end">
+                      <VisibilityOffTwoToneIcon
+                        fontSize="default"
+                        className={classes.passwordEye}
+                        onClick={this.showPassword}
+                      />
+                    </InputAdornment>
+                  ) : (
+                    <InputAdornment position="end">
+                      <VisibilityTwoToneIcon
+                        fontSize="default"
+                        className={classes.passwordEye}
+                        onClick={this.showPassword}
+                      />
+                    </InputAdornment>
+                  )
+                }
+              />
+            </FormControl>
+
+            <FormControl required fullWidth margin="normal">
+              <InputLabel htmlFor="newpasswordc" className={classes.labels}>
+               new password
+              </InputLabel>
+              <Input
+                name="newpasswordc"
+                autoComplete="newpasswordc"
+                className={classes.inputs}
+                disableUnderline={true}
+                onChange={this.handleChange("newpasswordc")}
+                type={this.state.hidePassword ? "newpasswordc" : "input"}
                 endAdornment={
                   this.state.hidePassword ? (
                     <InputAdornment position="end">
@@ -159,18 +193,7 @@ class Login extends Component {
               type="submit"
               onClick={this.submitLogin}
             >
-             Login
-            </Button>
-
-            <Button
-              disabled={!this.isValid()}
-              disableRipple
-              variant="outlined"
-              className={classes.button}
-              type="submit"
-              onClick={this.forgotPass}
-            >
-             Forgot Password?
+             Change Password
             </Button>
           </form>
 
@@ -214,4 +237,4 @@ class Login extends Component {
   }
 }
 
-export default withStyles(login)(Login);
+export default withStyles(login)(ChangePass);

@@ -20,6 +20,8 @@ import { Link } from 'react-router-dom'
 import UpdateUserHelper from './Component/UpdateUserHelper'
 import Logout from './Component/Logout'
 import CompleteBooking from './Component/CompleteBooking'
+import ChangePass from './Component/ChangePass'
+
 
 
 //.env
@@ -59,6 +61,7 @@ export default function SignedApp() {
           <Route path="/MyProfile" component={UpdateUserHelper} exact />
           <Route path="/Login" component={Login} exact />
           <Route path="/logout" component={Logout} exact />
+          <Route path="/ChangePass" component={ChangePass} exact />
 
 
         </Switch>
@@ -107,5 +110,3 @@ const Home = () => (
     </Link>
   </div>
 )
-
-
