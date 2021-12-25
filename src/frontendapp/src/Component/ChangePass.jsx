@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
-import { login } from "./LoginStyles";
+import { changePass } from "./ChangePassStyles";
 import InputAdornment from "@material-ui/core/InputAdornment";
 
 import CssBaseline from "@material-ui/core/CssBaseline"; 
@@ -18,18 +18,15 @@ import CloseIcon from "@material-ui/icons/Close";
 import SignUp from "./SignUp";
 import LoginHelper from "./LoginHelper";
 import { useHistory } from 'react-router-dom';
-
+import jwt from 'jwt-decode'
+import CheckPassword from './CheckPassword'
+import UpdateUserHelper from "./UpdateUserHelper";
+import ChangePassword from "./ChangePassword";
 class ChangePass extends Component {
   state = {
-    firstName: "",
-    lastName: "",
-    homeAddress: "",
-    countryCode: "",
-    telephoneNumber: "",
-    passportNumber: "",
-    email: "",
-    password: "",
-    passwordConfrim: "",
+    oldpassword: "",
+    newpassword:"",
+    newpasswordc: "",
     hidePassword: true,
     error: null,
     errorOpen: false
@@ -47,26 +44,30 @@ class ChangePass extends Component {
     });
   };
 
-  passwordMatch = () => this.state.password === this.state.passwordConfrim;
+  passwordMatch = () => this.state.newpassword === this.state.newpasswordc;
 
   showPassword = () => {
     this.setState(prevState => ({ hidePassword: !prevState.hidePassword }));
   };
 
   isValid = () => {
-    if (this.state.email === "") {
+    if (this.state.oldpassword === "" || this.state.newpassword === "" || this.state.newpasswordc === "") {
       return false;
     }
     return true;
   };
-  submitLogin = e => {
+  submitChangePass = e => {
     e.preventDefault();
 
     const newUserCredentials = {
-      Email: this.state.email,
-      Password: this.state.password,
+      Email: jwt(localStorage.getItem("accessToken")).Email,
+      Password: this.state.oldpassword,
+      NewPassword: this.state.newpassword
     };
-    LoginHelper(newUserCredentials)
+    console.log(newUserCredentials)
+
+   CheckPassword(newUserCredentials)
+    
    
     //dispath to userActions
   };
@@ -81,7 +82,7 @@ class ChangePass extends Component {
        
           <form
             className={classes.form}
-            onSubmit={() => this.submitLogin}
+            onSubmit={() => this.submitChangePass}
           >
 
 
@@ -185,13 +186,14 @@ class ChangePass extends Component {
             </FormControl>
 
             <Button
+            
               disabled={!this.isValid()}
               disableRipple
               fullWidth
               variant="outlined"
               className={classes.button}
               type="submit"
-              onClick={this.submitLogin}
+              onClick={this.submitChangePass}
             >
              Change Password
             </Button>
@@ -237,4 +239,4 @@ class ChangePass extends Component {
   }
 }
 
-export default withStyles(login)(ChangePass);
+export default withStyles(changePass)(ChangePass);

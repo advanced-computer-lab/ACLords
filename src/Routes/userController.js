@@ -70,6 +70,23 @@ exports.updateUser = (req, res) => {
   });
 
 };
+exports.updatePassword = async (req, res) => {
+  console.log(req.params.id)
+  console.log(req.body)
+  const salt = await bcrypt.genSalt()
+  const hashedPassword = await bcrypt.hash(req.body.Password, salt)
+  const body = {
+    Password: hashedPassword
+  }
+  console.log(req.body)
+  User.findByIdAndUpdate(req.params.id, body).then(result => {
+    res.status(200).send("User updated ");
+    console.log('The User is Updated successfully !');
+  }).catch(err => {
+    console.log(err);
+  });
+
+};
 
 //Deleting an existing user
 exports.deleteUser = (req, res) => {

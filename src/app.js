@@ -56,6 +56,8 @@ app.post("/CompleteReturnBooking", flightController.completeReturnBooking);
 app.post("/GetBookedFlights", flightController.getBookedFlights);
 app.get("/User/:id",userController.getUser);
 app.put("/UpdateUser/:id",userController.updateUser);
+
+app.put("/UpdatePassword/:id",userController.updatePassword);
 app.get("/ViewUsers", userController.viewUsers);
 
 module.exports = app
