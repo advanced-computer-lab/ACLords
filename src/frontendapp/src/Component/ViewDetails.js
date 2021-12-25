@@ -12,6 +12,7 @@ import UpdateFlights from './UpdateFlights';
 import emailjs from 'emailjs-com'
 import {init} from 'emailjs-com'
 import flight from './Flight'
+import jwt from 'jwt-decode'
 
 init("user_cS7Y0uXoWVDpEmlzxTkDa");
 
@@ -20,6 +21,10 @@ const templateID = 'template_5pw7nun';
 const userID = 'user_cS7Y0uXoWVDpEmlzxTkDa';
 
 export default function ViewDetails(data) {
+    const accessToken = localStorage.getItem("accessToken")
+
+    var email = jwt(accessToken).Email
+    console.log(email)
     console.log(data.location.state._id)
     const [flights, setFlights] = useState([]);
     const history = useHistory();
@@ -109,8 +114,11 @@ export default function ViewDetails(data) {
                     })
                     
                     CompleteBooking(data.location.state);
-                    emailjs.send(serviceID,templateID,{to_name:"Danial",id:data.location.state._id,send_to:"danial.amir97@gmail.com"},userID)
-    
+
+                    var UserId = jwt(accessToken)._id
+                    var name = jwt(accessToken).FirstName
+                   
+                    emailjs.send(serviceID,templateID,{to_name: name, id:UserId, send_to:JSON.stringify(email)},userID)    
                 // history.push({
                 //     pathname:"/ViewDetails/BookFlight", state: data.location.state
                 // });

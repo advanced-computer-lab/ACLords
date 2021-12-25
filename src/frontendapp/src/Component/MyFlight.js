@@ -11,6 +11,7 @@ import CancelBooking from './CancelBooking';
 import emailjs from 'emailjs-com'
 import {init} from 'emailjs-com'
 import flight from './Flight'
+import jwt from 'jwt-decode'
 
 init("user_cS7Y0uXoWVDpEmlzxTkDa");
 
@@ -56,8 +57,12 @@ export default function MyFlight({ data }) {
             // .catch((err) => {
             // console.log("Error!");
             // });
-            
-            emailjs.send(serviceID,templateID,{to_name:"Danial",id:data.location.state._id,send_to:"danial.amir97@gmail.com"},userID)
+            const accessToken =localStorage.getItem("accessToken")
+
+            var UserId = jwt(accessToken)._id
+            var name = jwt(accessToken).FirstName
+            var email = jwt(accessToken).Email
+            emailjs.send(serviceID,templateID,{to_name: name, id:UserId, send_to:JSON.stringify(email)},userID)
             CancelBooking(data._id);
             history.push("/MyFlights")
         }
